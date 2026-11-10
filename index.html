@@ -2,1346 +2,1156 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ahmed Adel Serag — Software Developer & AI Systems Builder</title>
-<meta name="description" content="Portfolio of Ahmed Adel Serag (Dola) — Software Developer, DevOps Engineer, and AI Tooling Builder from Egypt. Creator of MindGate MCP and SmartCore LLM Proxy." />
-<meta property="og:title" content="Ahmed Adel Serag — Software Developer & AI Systems Builder" />
-<meta property="og:description" content="Building persistent AI memory gateways, developer tools, and resilient cloud architectures. Creator of MindGate MCP & SmartCore LLM Proxy." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Ahmed Adel Serag (Dola) — Cyber Terminal Portfolio</title>
+<meta name="description" content="Interactive Cyber Terminal portfolio of Ahmed Adel Serag (@aaserag1) — Software Developer, DevOps Engineer, and AI Tooling Builder." />
+<meta property="og:title" content="Ahmed Adel Serag — Interactive CLI Portfolio" />
+<meta property="og:description" content="Interactive cyber terminal: Explore MindGate MCP, SmartCore Proxy, DevOps systems, and tech stack in real-time." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://aaserag1.github.io/" />
-<meta name="theme-color" content="#0b1020" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1020'/%3E%3Cpath d='M9 26V13l7-7 7 7v13' fill='none' stroke='%2322d3ee' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='18' r='2.4' fill='%238b5cf6'/%3E%3C/svg%3E" />
+<meta name="theme-color" content="#07080d" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307080d'/%3E%3Cpath d='M8 10l6 6-6 6M16 22h8' stroke='%23818cf8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 <style>
 :root {
-  --bg: #0b1020;
-  --bg-soft: #10162e;
-  --panel: rgba(23, 30, 58, 0.55);
-  --panel-solid: #141b36;
-  --line: rgba(139, 163, 255, 0.14);
-  --line-strong: rgba(139, 163, 255, 0.28);
-  --text: #e8ecf8;
-  --muted: #9aa5c7;
-  --cyan: #22d3ee;
-  --violet: #8b5cf6;
-  --emerald: #34d399;
-  --amber: #fbbf24;
-  --ph-orange: #da552f;
-  --grad: linear-gradient(120deg, #22d3ee, #8b5cf6);
-  --grad-warm: linear-gradient(120deg, #f59e0b, #ef4444);
-  --radius: 18px;
-  --maxw: 1180px;
+  --bg-obsidian: #06070a;
+  --bg-shell: #0b0d14;
+  --bg-elevated: #111420;
+  --border-subtle: #1c2236;
+  --border-glow: #4f46e5;
+  --indigo-core: #6366f1;
+  --indigo-bright: #818cf8;
+  --purple-neon: #a855f7;
+  --cyan-neon: #06b6d4;
+  --cyan-bright: #22d3ee;
+  --emerald-live: #10b981;
+  --amber-warn: #f59e0b;
+  --rose-alert: #f43f5e;
+  --text-main: #e2e8f0;
+  --text-muted: #828ba2;
+  --text-dim: #475569;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-ar: 'Noto Kufi Arabic', system-ui, sans-serif;
+  --radius-window: 14px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', 'Noto Kufi Arabic', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-obsidian);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  line-height: 1.5;
 }
 
-[lang="ar"] body, html[dir="rtl"] body {
-  font-family: 'Noto Kufi Arabic', 'Inter', system-ui, sans-serif;
+[lang="ar"] {
+  font-family: var(--font-ar), var(--font-mono);
 }
 
-::selection { background: rgba(139, 92, 246, 0.4); }
-.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-.container { max-width: var(--maxw); margin-inline: auto; padding-inline: 24px; }
+::selection {
+  background: rgba(99, 102, 241, 0.4);
+  color: #fff;
+}
 
-/* Ambient Lighting & Grid */
-.ambient {
+/* Background Ambient Lighting */
+.cyber-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(900px 500px at 85% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
-    radial-gradient(800px 600px at -10% 20%, rgba(34, 211, 238, 0.14), transparent 55%),
-    radial-gradient(700px 700px at 50% 110%, rgba(52, 211, 153, 0.10), transparent 60%);
+    radial-gradient(1000px 500px at 50% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(800px 600px at -10% 40%, rgba(6, 182, 212, 0.10), transparent 55%),
+    radial-gradient(700px 700px at 110% 80%, rgba(168, 85, 247, 0.12), transparent 60%);
 }
 
-.grid-overlay {
+.scanlines {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
-  opacity: 0.5;
-  background-image:
-    linear-gradient(rgba(139, 163, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 163, 255, 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 75%);
+  background: linear-gradient(rgba(18, 16, 38, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  opacity: 0.35;
 }
 
-/* Navbar */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: rgba(11, 16, 32, 0.75);
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s, box-shadow .3s;
+/* Matrix Canvas */
+#matrixCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-nav.scrolled {
-  border-bottom-color: var(--line);
-  box-shadow: 0 8px 40px rgba(0,0,0,.35);
+#matrixCanvas.active {
+  opacity: 0.18;
 }
 
-.nav-inner {
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding: 14px 24px;
+/* Main Layout Shell */
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 8px;
+    gap: 8px;
+  }
+}
+
+/* Top System Status Bar */
+.sys-bar {
+  flex: none;
+  background: var(--bg-shell);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.logo {
+.sys-left {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-decoration: none;
-  color: var(--text);
 }
 
-.logo-mark {
-  width: 38px;
-  height: 38px;
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform .15s;
+}
+.dot:hover { transform: scale(1.15); }
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.sys-host {
+  color: var(--indigo-bright);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sys-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 999px;
+  color: var(--emerald-live);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.sys-status-pill .live-blink {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--emerald-live);
+  animation: pulse-live 1.6s infinite;
+}
+@keyframes pulse-live { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.sys-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+}
+
+.sys-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.lang-switch-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--cyan-bright);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .2s;
+}
+.lang-switch-btn:hover {
+  border-color: var(--indigo-bright);
+  background: rgba(99, 102, 241, 0.15);
+  color: #fff;
+}
+
+/* Terminal Console Viewport */
+.terminal-window {
+  flex: 1;
+  background: var(--bg-shell);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-window);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.terminal-tabs {
+  flex: none;
+  background: rgba(11, 13, 20, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 6px 14px 0;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.term-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.term-tab.active {
+  background: var(--bg-elevated);
+  color: var(--indigo-bright);
+  border-color: var(--border-subtle);
+  font-weight: 600;
+}
+.term-tab:hover:not(.active) {
+  color: var(--text-main);
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .terminal-body {
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Terminal Elements & Typography */
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ascii-banner {
+  color: var(--indigo-bright);
+  font-size: 0.75rem;
+  line-height: 1.15;
+  white-space: pre;
+  user-select: none;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 0 18px rgba(99, 102, 241, 0.4);
+}
+
+@media (max-width: 650px) {
+  .ascii-banner {
+    font-size: 0.52rem;
+  }
+}
+
+.cli-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-indigo { background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.4); color: var(--indigo-bright); }
+.badge-cyan { background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); color: var(--cyan-bright); }
+.badge-emerald { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: var(--emerald-live); }
+.badge-orange { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: var(--amber-warn); }
+
+.cli-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin: 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.cli-desc {
+  color: var(--text-muted);
+  max-width: 78ch;
+  margin-bottom: 10px;
+}
+
+.cli-highlight {
+  color: var(--cyan-bright);
+  font-weight: 600;
+}
+
+/* Command Entry Line */
+.command-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
   flex: none;
 }
 
-.logo-text {
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
-}
-
-.logo-text small {
-  display: block;
-  font-weight: 500;
-  font-size: 0.68rem;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-}
-
-.nav-links {
-  display: flex;
-  gap: 22px;
-  margin-inline-start: auto;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: color .2s;
-}
-
-.nav-links a:hover { color: var(--cyan); }
-
-.nav-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  cursor: pointer;
-  border-radius: 12px;
-  padding: 10px 18px;
-  font-size: 0.86rem;
+.prompt-prefix {
+  color: var(--emerald-live);
   font-weight: 700;
-  text-decoration: none;
-  transition: transform .15s, box-shadow .2s, background .2s, border-color .2s;
-  font-family: inherit;
-  white-space: nowrap;
-}
-
-.btn:active { transform: translateY(1px) scale(.98); }
-
-.btn-primary {
-  background: var(--grad);
-  color: #0b1020;
-  box-shadow: 0 6px 30px rgba(94, 199, 255, 0.28);
-}
-.btn-primary:hover {
-  box-shadow: 0 8px 36px rgba(139, 92, 246, 0.4);
-  transform: translateY(-1px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--line-strong);
-}
-.btn-ghost:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-.lang-toggle {
-  background: var(--panel-solid);
-  border: 1px solid var(--line-strong);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 8px 14px;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 700;
-  font-family: 'Noto Kufi Arabic', Inter, sans-serif;
-  transition: border-color .2s, color .2s;
-}
-.lang-toggle:hover {
-  border-color: var(--violet);
-  color: var(--cyan);
-}
-
-/* Hero Section */
-.hero {
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding: 56px 24px 36px;
-  display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
-  gap: 44px;
-  align-items: center;
-  position: relative;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: rgba(34, 211, 238, 0.06);
-  font-size: 0.76rem;
-  color: #a5f3fc;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.badge .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--emerald);
-  box-shadow: 0 0 10px var(--emerald);
-  animation: pulse 1.6s infinite;
-}
-@keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
-
-h1 {
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-  font-weight: 800;
-}
-
-.grad-text {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  font-weight: 600;
-  color: #c4cce8;
-  margin-top: 10px;
-  letter-spacing: -0.01em;
-}
-
-.hero p.lead {
-  margin-top: 16px;
-  font-size: 0.98rem;
-  color: var(--muted);
-  max-width: 48ch;
-  line-height: 1.7;
-}
-
-[dir="rtl"] .hero p.lead {
-  max-width: none;
-}
-
-.hero-cta {
   display: flex;
-  gap: 12px;
-  margin-top: 26px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.hero-socials {
-  display: flex;
-  gap: 10px;
-  margin-top: 22px;
-  flex-wrap: wrap;
-}
-
-.social-pill {
-  display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(23, 30, 58, 0.4);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: all .2s;
+  white-space: nowrap;
+}
+.prompt-dir {
+  color: var(--indigo-bright);
+}
+.prompt-dollar {
+  color: var(--cyan-bright);
 }
 
-.social-pill:hover {
-  color: var(--text);
-  border-color: var(--line-strong);
-  background: rgba(34, 211, 238, 0.08);
-  transform: translateY(-2px);
-}
-
-/* Terminal Card */
-.terminal {
-  background: #05070f;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  box-shadow: 0 25px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(34,211,238,.05) inset, 0 0 70px rgba(139,92,246,.12);
-  overflow: hidden;
-  transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
-  transition: transform .3s ease;
-}
-
-[dir="rtl"] .terminal {
-  transform: perspective(1200px) rotateY(4deg) rotateX(2deg);
-}
-
-.terminal:hover {
-  transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
-}
-
-.term-bar {
+.cli-input-wrapper {
+  flex: 1;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  background: rgba(255,255,255,.03);
-  border-bottom: 1px solid var(--line);
 }
 
-.tdot { width: 11px; height: 11px; border-radius: 50%; }
-.tdot.r { background: #ff5f57 }
-.tdot.y { background: #febc2e }
-.tdot.g { background: #28c840 }
-
-.term-title {
-  margin-inline-start: auto;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--muted);
+#cliInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  caret-color: var(--cyan-bright);
 }
 
-.term-body {
-  padding: 18px 20px 22px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.77rem;
-  min-height: 280px;
+/* Cards & Output UI Blocks */
+.cli-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--indigo-bright);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 0;
+  transition: all .2s ease;
+}
+.cli-card:hover {
+  border-color: var(--indigo-core);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 15px rgba(99, 102, 241, 0.15);
+  transform: translateX(4px);
+}
+[dir="rtl"] .cli-card {
+  border-left: 1px solid var(--border-subtle);
+  border-right: 3px solid var(--indigo-bright);
+}
+[dir="rtl"] .cli-card:hover {
+  transform: translateX(-4px);
 }
 
-.tline {
-  white-space: pre-wrap;
-  word-break: break-word;
-  margin-bottom: 8px;
-  line-height: 1.55;
-}
-.t-agent { color: #93c5fd; }
-.t-tool { color: #c4b5fd; }
-.t-ok { color: var(--emerald); }
-.t-dim { color: #5b6687; }
-.t-str { color: #a7f3d0; }
-.t-warn { color: var(--amber); }
-
-/* Quick Stats Bar */
-.stats {
-  max-width: var(--maxw);
-  margin: 10px auto 0;
-  padding: 18px 24px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.stat {
-  text-align: center;
-  padding: 16px 12px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(23, 30, 58, 0.35);
-  backdrop-filter: blur(6px);
-  transition: transform .2s, border-color .2s;
-}
-
-.stat:hover {
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-}
-
-.stat b {
-  display: block;
-  font-size: 1.55rem;
-  letter-spacing: -0.02em;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-}
-
-.stat span {
-  display: block;
-  font-size: 0.76rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* Sections */
-.block {
-  max-width: var(--maxw);
-  margin: 64px auto 0;
-  padding: 0 24px;
-}
-
-.kicker {
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--cyan);
-  font-weight: 700;
-  margin-bottom: 8px;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  font-weight: 800;
-}
-
-.sublead {
-  color: var(--muted);
-  margin-top: 10px;
-  font-size: 0.95rem;
-  max-width: 58ch;
-}
-
-/* Project Cards */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 32px;
-}
-
-.project-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 24px;
-  background: var(--panel);
-  backdrop-filter: blur(8px);
-  transition: transform .25s, border-color .25s, box-shadow .25s;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  inset-inline-start: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--grad);
-  opacity: .8;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--line-strong);
-  box-shadow: 0 20px 50px rgba(0,0,0,.45);
-}
-
-.card-top {
+.card-headline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.icon-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: rgba(34, 211, 238, 0.08);
-  border: 1px solid rgba(34, 211, 238, 0.25);
-  font-size: 1.25rem;
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 10px 0;
 }
 
 .card-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  border-radius: 6px;
   font-size: 0.72rem;
-  font-weight: 700;
+  padding: 2px 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: var(--text-muted);
 }
 
-.card-tag.ph {
-  background: rgba(218, 85, 47, 0.15);
-  border: 1px solid rgba(218, 85, 47, 0.35);
-  color: #ff7a50;
-}
-
-.card-tag.proxy {
-  background: rgba(139, 92, 246, 0.15);
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  color: #c4b5fd;
-}
-
-.card-tag.tool {
-  background: rgba(52, 211, 153, 0.15);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #6ee7b7;
-}
-
-.project-card h3 {
-  font-size: 1.15rem;
-  margin: 16px 0 8px;
-  letter-spacing: -0.01em;
-  font-weight: 700;
-}
-
-.project-card p {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.6;
-  flex: 1;
-}
-
-.tech-chips {
+.card-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 18px 0;
-}
-
-.tech-chip {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  background: rgba(139, 163, 255, 0.08);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 3px 8px;
-  color: #c4cce8;
-}
-
-.project-links {
-  display: flex;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  align-items: center;
-}
-
-.project-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--muted);
-  transition: color .2s;
-}
-
-.project-links a:hover {
-  color: var(--cyan);
-}
-
-.project-links a.primary-link {
-  color: var(--cyan);
-}
-
-/* Core Expertise / Features */
-.features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 32px;
-}
-
-.feature {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 24px;
-  background: linear-gradient(160deg, rgba(23,30,58,.6), rgba(15,20,42,.35));
-  position: relative;
-  overflow: hidden;
-  transition: transform .2s, border-color .2s;
-}
-
-.feature:hover {
-  transform: translateY(-3px);
-  border-color: var(--line-strong);
-}
-
-.feature-icon {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-
-.feature h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.feature p {
-  font-size: 0.86rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.feature small {
-  display: inline-block;
-  margin-top: 12px;
-  font-size: 0.72rem;
-  color: var(--violet);
-  font-weight: 700;
-  letter-spacing: .04em;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Skills Matrix */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.skill-col {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px;
-  background: var(--panel);
-}
-
-.skill-col h4 {
-  font-size: 0.92rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text);
-}
-
-.skill-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.skill-items li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.84rem;
-  color: var(--muted);
-}
-
-.skill-items li i {
-  color: var(--cyan);
-  font-size: 0.9rem;
-  width: 16px;
-  text-align: center;
-}
-
-/* Connect / Call To Action */
-.connect-card {
-  margin-top: 40px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  background: linear-gradient(145deg, rgba(23,30,58,.8), rgba(11,16,32,.9));
-  padding: 44px 32px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5);
-}
-
-.connect-links {
-  display: flex;
-  justify-content: center;
   gap: 12px;
-  margin-top: 26px;
+  margin-top: 10px;
   flex-wrap: wrap;
 }
 
-/* Footer */
-footer {
-  border-top: 1px solid var(--line);
-  padding: 32px 24px;
-  margin-top: 80px;
-}
-
-.foot-inner {
-  max-width: var(--maxw);
-  margin-inline: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+.cli-link {
+  display: inline-flex;
   align-items: center;
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-
-.foot-inner a {
-  color: #c4cce8;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cyan-bright);
   text-decoration: none;
-  transition: color .2s;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 6px;
+  padding: 4px 12px;
+  transition: all .2s;
+}
+.cli-link:hover {
+  background: var(--cyan-bright);
+  color: #000;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
 }
 
-.foot-inner a:hover {
-  color: var(--cyan);
+.cli-link.ph-link {
+  color: #ff7a50;
+  background: rgba(218, 85, 47, 0.12);
+  border-color: rgba(218, 85, 47, 0.35);
+}
+.cli-link.ph-link:hover {
+  background: #da552f;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(218, 85, 47, 0.5);
 }
 
-.foot-links {
+/* Skills Matrix in Terminal */
+.skills-cli-table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.skills-cli-table th, .skills-cli-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+}
+[dir="rtl"] .skills-cli-table th, [dir="rtl"] .skills-cli-table td {
+  text-align: right;
+}
+.skills-cli-table th {
+  color: var(--indigo-bright);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.skill-bar-wrap {
+  width: 180px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+[dir="rtl"] .skill-bar-wrap {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--indigo-core), var(--cyan-neon));
+  border-radius: 4px;
+}
+
+/* Bottom Quick Command Dock */
+.quick-dock {
+  flex: none;
+  background: var(--bg-shell);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 16px;
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  overflow-x: auto;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 40px;
-    gap: 36px;
-  }
-  .terminal {
-    transform: none;
-  }
-  [dir="rtl"] .terminal {
-    transform: none;
-  }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .nav-links {
-    display: none;
-  }
+.dock-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
-@media (max-width: 560px) {
-  .features {
-    grid-template-columns: 1fr;
-  }
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  .stats {
-    grid-template-columns: 1fr;
-  }
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .btn {
-    justify-content: center;
-  }
+.dock-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
+
+.dock-chip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .2s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.dock-chip:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--indigo-bright);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.dock-chip.primary-chip {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--indigo-bright);
+  color: var(--indigo-bright);
+}
+.dock-chip.primary-chip:hover {
+  background: var(--indigo-core);
+  color: #fff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-shell); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--indigo-bright); }
 </style>
 </head>
 <body>
 
-<div class="ambient"></div>
-<div class="grid-overlay"></div>
+<div class="cyber-bg"></div>
+<div class="scanlines"></div>
+<canvas id="matrixCanvas"></canvas>
 
-<!-- Navigation -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="logo" href="#top" aria-label="Ahmed Adel Serag">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <rect width="40" height="40" rx="9" fill="#10162e" stroke="#22d3ee" stroke-opacity="0.5"/>
-        <path d="M11 32V16l9-9 9 9v16" stroke="#22d3ee" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="20" cy="23" r="2.6" fill="#8b5cf6"/>
-        <path d="M20 19v-4M14 32h12" stroke="#8b5cf6" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.8"/>
-      </svg>
-      <span class="logo-text">Ahmed Adel Serag<small>Software &amp; AI Systems · Dola</small></span>
-    </a>
-
-    <div class="nav-links">
-      <a href="#about" data-i18n="nav_about">About</a>
-      <a href="#projects" data-i18n="nav_projects">Projects</a>
-      <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
-      <a href="#skills" data-i18n="nav_skills">Skills</a>
-      <a href="#connect" data-i18n="nav_connect">Connect</a>
+<div class="app-container">
+  <!-- System Status Bar -->
+  <header class="sys-bar">
+    <div class="sys-left">
+      <div class="window-dots">
+        <span class="dot dot-red" onclick="runCommand('clear')" title="Clear console"></span>
+        <span class="dot dot-yellow" onclick="runCommand('help')" title="Show commands"></span>
+        <span class="dot dot-green" onclick="toggleMatrix()" title="Toggle Matrix mode"></span>
+      </div>
+      <div class="sys-host">
+        <i class="fas fa-terminal"></i>
+        <span>serag@cyber-node</span>
+      </div>
+      <div class="sys-status-pill">
+        <span class="live-blink"></span>
+        <span id="sysStateText">SYSTEM: ACTIVE</span>
+      </div>
     </div>
 
-    <div class="nav-actions">
-      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">عربي</button>
-      <a class="btn btn-ghost" href="https://github.com/aaserag1" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
+    <div class="sys-right">
+      <span class="sys-meta-item"><i class="fas fa-microchip"></i> Node v22.13</span>
+      <span class="sys-meta-item"><i class="fas fa-map-marker-alt"></i> Egypt 🇪🇬</span>
+      <span class="sys-meta-item" id="clock">12:00:00 UTC</span>
+      <button class="lang-switch-btn" id="langBtn" onclick="toggleLang()">عربي</button>
     </div>
-  </div>
-</nav>
+  </header>
 
-<!-- Hero Section -->
-<header class="hero" id="top">
-  <div>
-    <span class="badge">
-      <span class="dot"></span>
-      <span data-i18n="hero_badge">Available for engineering &amp; AI systems</span>
-    </span>
-
-    <h1>
-      <span data-i18n="hero_hi">Hi, I'm</span> <span class="grad-text">Ahmed Adel Serag</span>
-    </h1>
-
-    <div class="hero-subtitle" data-i18n="hero_tagline">
-      Software Developer · DevOps Engineer · AI Tooling Builder
+  <!-- Interactive Terminal Window -->
+  <main class="terminal-window" onclick="focusCli()">
+    <div class="terminal-tabs">
+      <div class="term-tab active" id="tabSerag"><i class="fas fa-code-branch"></i> serag@portfolio:~$</div>
+      <div class="term-tab" onclick="runCommand('mindgate')"><i class="fas fa-brain"></i> mindgate-mcp</div>
+      <div class="term-tab" onclick="runCommand('projects')"><i class="fas fa-folder"></i> ~/projects</div>
+      <div class="term-tab" onclick="runCommand('contact')"><i class="fas fa-envelope"></i> ~/connect</div>
     </div>
 
-    <p class="lead" data-i18n="hero_lead">
-      I engineer persistent AI memory gateways, resilient LLM proxies, and automated data pipelines. Focused on local-first architectures, Node2Shell hardening, and giving autonomous agents real context.
-    </p>
+    <div class="terminal-body" id="termBody">
+      <div class="terminal-output" id="termOutput">
+        <!-- Banner & Welcome will be printed here -->
+      </div>
 
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects" data-i18n="btn_projects">
-        <i class="fas fa-rocket"></i>
-        <span>Explore Projects</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/aaserag/" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank" rel="noopener" style="color: #ff7a50; border-color: rgba(218,85,47,0.4);">
-        <i class="fab fa-product-hunt"></i>
-        <span>Product Hunt</span>
-      </a>
+      <div class="command-entry">
+        <div class="prompt-prefix">
+          <span>aaserag@devbox</span>:<span class="prompt-dir">~</span><span class="prompt-dollar">$</span>
+        </div>
+        <div class="cli-input-wrapper">
+          <input type="text" id="cliInput" autocomplete="off" spellcheck="false" placeholder="type 'help' or click commands below..." />
+        </div>
+      </div>
     </div>
+  </main>
 
-    <div class="hero-socials">
-      <a class="social-pill" href="https://github.com/aaserag1" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i> @aaserag1
-      </a>
-      <a class="social-pill" href="https://x.com/ahmedadel790146" target="_blank" rel="noopener">
-        <i class="fab fa-x-twitter"></i> @ahmedadel790146
-      </a>
-      <a class="social-pill" href="https://www.facebook.com/aaserag0" target="_blank" rel="noopener">
-        <i class="fab fa-facebook"></i> aaserag0
-      </a>
-      <span class="social-pill" style="cursor: default;">
-        <i class="fas fa-map-marker-alt"></i> Egypt 🇪🇬
-      </span>
+  <!-- Quick Command Dock (Clickable for anyone who doesn't want to type) -->
+  <footer class="quick-dock">
+    <span class="dock-label"><i class="fas fa-bolt"></i> Quick Actions:</span>
+    <div class="dock-chips">
+      <button class="dock-chip primary-chip" onclick="runCommand('about')"><i class="fas fa-user-astronaut"></i> about</button>
+      <button class="dock-chip primary-chip" onclick="runCommand('projects')"><i class="fas fa-rocket"></i> projects</button>
+      <button class="dock-chip" onclick="runCommand('mindgate')"><i class="fas fa-brain"></i> mindgate-mcp</button>
+      <button class="dock-chip" onclick="runCommand('skills')"><i class="fas fa-layer-group"></i> skills</button>
+      <button class="dock-chip" onclick="runCommand('contact')"><i class="fas fa-paper-plane"></i> contact</button>
+      <button class="dock-chip" onclick="runCommand('matrix')"><i class="fas fa-film"></i> matrix</button>
+      <button class="dock-chip" onclick="runCommand('help')"><i class="fas fa-question-circle"></i> help</button>
+      <button class="dock-chip" onclick="runCommand('clear')"><i class="fas fa-eraser"></i> clear</button>
     </div>
-  </div>
-
-  <!-- Terminal Live Visualizer -->
-  <div class="terminal" aria-hidden="true">
-    <div class="term-bar">
-      <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-      <span class="term-title">aaserag@devbox:~ (agent-session)</span>
-    </div>
-    <div class="term-body" id="termBody"></div>
-  </div>
-</header>
-
-<!-- Quick Stats Strip -->
-<div class="stats">
-  <div class="stat">
-    <b>3+</b>
-    <span data-i18n="stat_repos">Open-Source Repos</span>
-  </div>
-  <div class="stat">
-    <b>100%</b>
-    <span data-i18n="stat_local">Local &amp; Privacy First</span>
-  </div>
-  <div class="stat">
-    <b>MCP</b>
-    <span data-i18n="stat_mcp">Model Context Protocol</span>
-  </div>
-  <div class="stat">
-    <b>0</b>
-    <span data-i18n="stat_zero">Cloud Lock-in</span>
-  </div>
+  </footer>
 </div>
 
-<!-- Featured Projects -->
-<section class="block" id="projects">
-  <p class="kicker" data-i18n="proj_kicker">Shipped Work</p>
-  <h2 data-i18n="proj_title">Featured Projects</h2>
-  <p class="sublead" data-i18n="proj_sub">Production-ready developer tools, proxy gateways, and memory architectures.</p>
-
-  <div class="projects-grid">
-    <!-- MindGate MCP -->
-    <div class="project-card">
-      <div class="card-top">
-        <div class="icon-badge">🧠</div>
-        <span class="card-tag ph">
-          <i class="fab fa-product-hunt"></i> Featured on PH
-        </span>
-      </div>
-      <h3>MindGate MCP (بوابة العقل)</h3>
-      <p data-i18n="p1_desc">
-        Local-first, Node2Shell-hardened MCP memory &amp; context gateway for AI coding agents. Shared SQLite FTS5 memory across Antigravity, Cursor, Claude, OpenCode, and Codex. Zero cloud, zero leakage.
-      </p>
-      <div class="tech-chips">
-        <span class="tech-chip">TypeScript</span>
-        <span class="tech-chip">SQLite FTS5</span>
-        <span class="tech-chip">MCP SDK</span>
-        <span class="tech-chip">Security</span>
-      </div>
-      <div class="project-links">
-        <a class="primary-link" href="https://aaserag1.github.io/mindgate-mcp/" target="_blank" rel="noopener">
-          <i class="fas fa-external-link-alt"></i> <span data-i18n="link_site">Live Site</span>
-        </a>
-        <a href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank" rel="noopener">
-          <i class="fab fa-product-hunt"></i> Product Hunt
-        </a>
-        <a href="https://github.com/aaserag1/mindgate-mcp" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-      </div>
-    </div>
-
-    <!-- SmartCore LLM Proxy -->
-    <div class="project-card">
-      <div class="card-top">
-        <div class="icon-badge">⚡</div>
-        <span class="card-tag proxy">
-          <i class="fas fa-shield-alt"></i> Failover Gateway
-        </span>
-      </div>
-      <h3>SmartCore LLM Proxy</h3>
-      <p data-i18n="p2_desc">
-        OpenAI-compatible local LLM gateway with smart Gemini-to-DeepSeek automatic fallback, health checks, retries, Docker deployment, and cross-platform runners. Self-hosted AI reliability.
-      </p>
-      <div class="tech-chips">
-        <span class="tech-chip">Python</span>
-        <span class="tech-chip">Docker</span>
-        <span class="tech-chip">LiteLLM</span>
-        <span class="tech-chip">Failover Routing</span>
-      </div>
-      <div class="project-links">
-        <a class="primary-link" href="https://github.com/aaserag1/SmartCore-LLM-Proxy" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i> <span data-i18n="link_repo">View Repository</span>
-        </a>
-        <a href="https://github.com/aaserag1/SmartCore-LLM-Proxy/stargazers" target="_blank" rel="noopener">
-          <i class="fas fa-star" style="color: var(--amber);"></i> Star
-        </a>
-      </div>
-    </div>
-
-    <!-- ReproKit -->
-    <div class="project-card">
-      <div class="card-top">
-        <div class="icon-badge">🔧</div>
-        <span class="card-tag tool">
-          <i class="fas fa-user-shield"></i> Privacy-First
-        </span>
-      </div>
-      <h3>ReproKit</h3>
-      <p data-i18n="p3_desc">
-        Privacy-first GitHub issue repro bundle generator from local repository metadata. Captures diagnostic context, commits, and logs without leaking credentials or proprietary code.
-      </p>
-      <div class="tech-chips">
-        <span class="tech-chip">JavaScript</span>
-        <span class="tech-chip">Git Metadata</span>
-        <span class="tech-chip">CLI Tooling</span>
-        <span class="tech-chip">Privacy Redaction</span>
-      </div>
-      <div class="project-links">
-        <a class="primary-link" href="https://github.com/aaserag1/reprokit" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i> <span data-i18n="link_repo">View Repository</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Core Expertise -->
-<section class="block" id="expertise">
-  <p class="kicker" data-i18n="exp_kicker">What I Build</p>
-  <h2 data-i18n="exp_title">Engineering Focus</h2>
-  <p class="sublead" data-i18n="exp_sub">High-reliability engineering for modern software teams and autonomous AI workflows.</p>
-
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon">🧠</div>
-      <h3 data-i18n="feat1_t">AI Memory &amp; MCP Gateways</h3>
-      <p data-i18n="feat1_d">Architecting persistent context engines using SQLite FTS5 BM25 search, cross-agent handoffs, and automatic AGENTS.md rule compilation.</p>
-      <small>MODEL CONTEXT PROTOCOL</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🔄</div>
-      <h3 data-i18n="feat2_t">Resilient LLM Routing</h3>
-      <p data-i18n="feat2_d">Designing self-healing proxy gateways with zero-downtime provider failover (Gemini, DeepSeek, OpenAI) and local token optimization.</p>
-      <small>HIGH AVAILABILITY</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🛡️</div>
-      <h3 data-i18n="feat3_t">Node2Shell &amp; Secret Redaction</h3>
-      <p data-i18n="feat3_d">Implementing strict security boundaries, Brotli decompression locking, and on-write API key scrubbing before anything touches disk.</p>
-      <small>SECURITY-FIRST</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🐳</div>
-      <h3 data-i18n="feat4_t">DevOps &amp; Containerization</h3>
-      <p data-i18n="feat4_d">Docker containerization, automated GitHub Actions CI/CD workflows, and streamlined local runtime orchestrations.</p>
-      <small>DOCKER · CI/CD</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">📊</div>
-      <h3 data-i18n="feat5_t">Data Operations &amp; Analysis</h3>
-      <p data-i18n="feat5_d">Line-by-line contract reconciliation, agricultural investment data models, and operational audit workflows with 0% discrepancy tolerance.</p>
-      <small>DATA RIGOR</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">📱</div>
-      <h3 data-i18n="feat6_t">Full-Stack &amp; Mobile</h3>
-      <p data-i18n="feat6_d">Building cross-platform user interfaces with Flutter / Dart, responsive Web SPAs, and robust Node/TypeScript backend microservices.</p>
-      <small>FLUTTER · NODE · DART</small>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Matrix -->
-<section class="block" id="skills">
-  <p class="kicker" data-i18n="skills_kicker">Technical Toolbox</p>
-  <h2 data-i18n="skills_title">Technologies &amp; Tools</h2>
-  <p class="sublead" data-i18n="skills_sub">A battle-tested stack spanning systems, agents, and cloud automation.</p>
-
-  <div class="skills-grid">
-    <div class="skill-col">
-      <h4><i class="fas fa-code"></i> <span data-i18n="col_lang">Languages</span></h4>
-      <ul class="skill-items">
-        <li><i class="fab fa-python"></i> Python (Async, FastAPI, LLM)</li>
-        <li><i class="fab fa-js"></i> TypeScript / JavaScript</li>
-        <li><i class="fas fa-terminal"></i> Dart (Flutter SDK)</li>
-        <li><i class="fas fa-database"></i> SQL (SQLite, FTS5)</li>
-      </ul>
-    </div>
-
-    <div class="skill-col">
-      <h4><i class="fas fa-robot"></i> <span data-i18n="col_ai">AI &amp; MCP</span></h4>
-      <ul class="skill-items">
-        <li><i class="fas fa-brain"></i> Model Context Protocol (MCP)</li>
-        <li><i class="fas fa-network-wired"></i> LiteLLM / Proxy Gateways</li>
-        <li><i class="fas fa-microchip"></i> Gemini &amp; DeepSeek APIs</li>
-        <li><i class="fas fa-memory"></i> FTS5 BM25 Semantic Recall</li>
-      </ul>
-    </div>
-
-    <div class="skill-col">
-      <h4><i class="fas fa-cloud"></i> <span data-i18n="col_ops">DevOps &amp; Infra</span></h4>
-      <ul class="skill-items">
-        <li><i class="fab fa-docker"></i> Docker &amp; Compose</li>
-        <li><i class="fab fa-github"></i> GitHub Actions &amp; Workflows</li>
-        <li><i class="fab fa-linux"></i> Linux &amp; Shell Scripting</li>
-        <li><i class="fas fa-shield-alt"></i> Node2Shell Hardening</li>
-      </ul>
-    </div>
-
-    <div class="skill-col">
-      <h4><i class="fas fa-chart-line"></i> <span data-i18n="col_biz">Data &amp; Products</span></h4>
-      <ul class="skill-items">
-        <li><i class="fas fa-file-excel"></i> Advanced Financial Auditing</li>
-        <li><i class="fas fa-cubes"></i> Contract Reconciliation</li>
-        <li><i class="fab fa-product-hunt"></i> Product Hunt Maker</li>
-        <li><i class="fas fa-lock"></i> Zero-Knowledge Redaction</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Connect Card -->
-<section class="block" id="connect">
-  <div class="connect-card">
-    <p class="kicker" data-i18n="con_kicker">Let's Build Together</p>
-    <h2 data-i18n="con_title">Have an interesting project or challenge?</h2>
-    <p class="sublead" style="margin-inline: auto;" data-i18n="con_sub">
-      Whether you're building autonomous AI systems, designing resilient infrastructure, or seeking technical collaboration — let's connect.
-    </p>
-
-    <div class="connect-links">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/aaserag/" target="_blank" rel="noopener">
-        <i class="fab fa-linkedin"></i>
-        <span>Connect on LinkedIn</span>
-      </a>
-      <a class="btn btn-ghost" href="https://x.com/ahmedadel790146" target="_blank" rel="noopener">
-        <i class="fab fa-x-twitter"></i>
-        <span>Follow on X</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.facebook.com/aaserag0" target="_blank" rel="noopener">
-        <i class="fab fa-facebook"></i>
-        <span>Facebook</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank" rel="noopener" style="color: #ff7a50; border-color: rgba(218,85,47,0.4);">
-        <i class="fab fa-product-hunt"></i>
-        <span>Product Hunt</span>
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/aaserag1" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-        <span>GitHub Profile</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="foot-inner">
-    <div>
-      Designed &amp; Built by <a href="https://github.com/aaserag1">Ahmed Adel Serag (Dola)</a> · &copy; <span id="year">2026</span>
-    </div>
-    <div class="foot-links">
-      <a href="https://aaserag1.github.io/mindgate-mcp/" target="_blank" rel="noopener">MindGate MCP</a>
-      <a href="https://github.com/aaserag1/SmartCore-LLM-Proxy" target="_blank" rel="noopener">SmartCore Proxy</a>
-      <a href="https://github.com/aaserag1/reprokit" target="_blank" rel="noopener">ReproKit</a>
-      <a href="https://github.com/aaserag1/aaserag1.github.io" target="_blank" rel="noopener">Source Code</a>
-    </div>
-  </div>
-</footer>
-
-<!-- Interactive Scripts & i18n -->
 <script>
-// Arabic & English Translations
+// State & Variables
+let currentLang = 'en';
+let commandHistory = [];
+let historyIndex = -1;
+let matrixActive = false;
+
+// ASCII ART BANNER
+const ASCII_ART = `
+ █████╗ ██╗  ██╗███╗   ███╗███████╗██████╗     ███████╗███████╗██████╗  █████╗  ██████╗ 
+██╔══██╗██║  ██║████╗ ████║██╔════╝██╔══██╗    ██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝ 
+███████║███████║██╔████╔██║█████╗  ██║  ██║    ███████╗█████╗  ██████╔╝███████║██║  ███╗
+██╔══██║██╔══██║██║╚██╔╝██║██╔══╝  ██║  ██║    ╚════██║██╔══╝  ██╔══██╗██╔══██║██║   ██║
+██║  ██║██║  ██║██║ ╚═╝ ██║███████╗██████╔╝    ███████║███████╗██║  ██║██║  ██║╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝     ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ 
+`;
+
+// Localization Dictionaries
 const I18N = {
   en: {
-    nav_about: "About",
-    nav_projects: "Projects",
-    nav_expertise: "Expertise",
-    nav_skills: "Skills",
-    nav_connect: "Connect",
-    hero_badge: "Available for engineering & AI systems",
-    hero_hi: "Hi, I'm",
-    hero_tagline: "Software Developer · DevOps Engineer · AI Tooling Builder",
-    hero_lead: "I engineer persistent AI memory gateways, resilient LLM proxies, and automated data pipelines. Focused on local-first architectures, Node2Shell hardening, and giving autonomous agents real context.",
-    btn_projects: "Explore Projects",
-    stat_repos: "Open-Source Repos",
-    stat_local: "Local & Privacy First",
-    stat_mcp: "Model Context Protocol",
-    stat_zero: "Cloud Lock-in",
-    proj_kicker: "Shipped Work",
-    proj_title: "Featured Projects",
-    proj_sub: "Production-ready developer tools, proxy gateways, and memory architectures.",
-    p1_desc: "Local-first, Node2Shell-hardened MCP memory & context gateway for AI coding agents. Shared SQLite FTS5 memory across Antigravity, Cursor, Claude, OpenCode, and Codex. Zero cloud, zero leakage.",
-    p2_desc: "OpenAI-compatible local LLM gateway with smart Gemini-to-DeepSeek automatic fallback, health checks, retries, Docker deployment, and cross-platform runners. Self-hosted AI reliability.",
-    p3_desc: "Privacy-first GitHub issue repro bundle generator from local repository metadata. Captures diagnostic context, commits, and logs without leaking credentials or proprietary code.",
-    link_site: "Live Site",
-    link_repo: "View Repository",
-    exp_kicker: "What I Build",
-    exp_title: "Engineering Focus",
-    exp_sub: "High-reliability engineering for modern software teams and autonomous AI workflows.",
-    feat1_t: "AI Memory & MCP Gateways",
-    feat1_d: "Architecting persistent context engines using SQLite FTS5 BM25 search, cross-agent handoffs, and automatic AGENTS.md rule compilation.",
-    feat2_t: "Resilient LLM Routing",
-    feat2_d: "Designing self-healing proxy gateways with zero-downtime provider failover (Gemini, DeepSeek, OpenAI) and local token optimization.",
-    feat3_t: "Node2Shell & Secret Redaction",
-    feat3_d: "Implementing strict security boundaries, Brotli decompression locking, and on-write API key scrubbing before anything touches disk.",
-    feat4_t: "DevOps & Containerization",
-    feat4_d: "Docker containerization, automated GitHub Actions CI/CD workflows, and streamlined local runtime orchestrations.",
-    feat5_t: "Data Operations & Analysis",
-    feat5_d: "Line-by-line contract reconciliation, agricultural investment data models, and operational audit workflows with 0% discrepancy tolerance.",
-    feat6_t: "Full-Stack & Mobile",
-    feat6_d: "Building cross-platform user interfaces with Flutter / Dart, responsive Web SPAs, and robust Node/TypeScript backend microservices.",
-    skills_kicker: "Technical Toolbox",
-    skills_title: "Technologies & Tools",
-    skills_sub: "A battle-tested stack spanning systems, agents, and cloud automation.",
-    col_lang: "Languages",
-    col_ai: "AI & MCP",
-    col_ops: "DevOps & Infra",
-    col_biz: "Data & Systems",
-    con_kicker: "Let's Build Together",
-    con_title: "Have an interesting project or challenge?",
-    con_sub: "Whether you're building autonomous AI systems, designing resilient infrastructure, or seeking technical collaboration — let's connect."
+    welcome: "⚡ Welcome to Ahmed Adel Serag's Interactive Cyber Terminal.",
+    hint: "Type 'help' to see all commands, or click the buttons on the bottom dock.",
+    whoami: "Ahmed Adel Serag (Dola) — Software Developer · DevOps Engineer · AI Tooling Builder",
+    loc: "Egypt 🇪🇬 · Remote / Global",
+    bio: "I architect persistent AI memory gateways, resilient failover LLM proxies, and automated data pipelines. Focused on local-first privacy, Node2Shell hardening, and giving autonomous agents real, continuous context.",
+    cmd_not_found: "Command not found. Type 'help' for a list of valid commands.",
+    help_title: "AVAILABLE SYSTEM COMMANDS:",
+    help_list: [
+      ["about", "Display developer profile, bio, and engineering background"],
+      ["projects", "List open-source projects, tools, and repositories"],
+      ["mindgate", "Deep dive into MindGate MCP (Featured on Product Hunt)"],
+      ["skills", "Display technical capabilities and tool matrix"],
+      ["contact", "Get social, email, and collaboration links"],
+      ["stats", "Show developer metrics and open-source stats"],
+      ["matrix", "Toggle the Cyber Matrix rain animation"],
+      ["clear", "Clear the terminal screen"],
+      ["arabic", "Switch terminal language to Arabic (عربي)"],
+      ["english", "Switch terminal language to English"]
+    ]
   },
   ar: {
-    nav_about: "عنّي",
-    nav_projects: "المشاريع",
-    nav_expertise: "مجالات الخبرة",
-    nav_skills: "المهارات",
-    nav_connect: "تواصل معي",
-    hero_badge: "متاح للمشاريع والأنظمة الذكية والتعاون التقني",
-    hero_hi: "أهلاً، أنا",
-    hero_tagline: "مطور برمجيات · مهندس DevOps · صانع أدوات الذكاء الاصطناعي",
-    hero_lead: "أبني بوابات ذاكرة محلية لوكلاء الذكاء الاصطناعي، وموزعات LLM مرنة، وأنظمة تدقيق بيانات مؤتمتة. تركيزي الأساسي على الأنظمة المحلية، والحماية الصارمة، ومنح الوكلاء سياقاً حقيقياً لا يضيع.",
-    btn_projects: "تصفح المشاريع",
-    stat_repos: "مستودعات مفتوحة المصدر",
-    stat_local: "محلي ١٠٠٪ وخاص بالكامل",
-    stat_mcp: "بروتوكول سياق النماذج (MCP)",
-    stat_zero: "اعتماد صفري على السحابة",
-    proj_kicker: "أعمال منشورة",
-    proj_title: "مشاريع مميزة",
-    proj_sub: "أدوات مطورين جاهزة للإنتاج، بوابات ربط، وبنى تحتية للذاكرة المستمرة.",
-    p1_desc: "بوابة ذاكرة محلية ومؤمنة ضد Node2Shell لوكلاء البرمجة بالذكاء الاصطناعي. ذاكرة SQLite FTS5 موحدة بين Antigravity وCursor وClaude وCodex. بدون سحابة، وبدون تسريب أسرار.",
-    p2_desc: "بوابة محلية متوافقة مع OpenAI توفر تحويلاً ذكياً تلقائياً بين Gemini وDeepSeek عند الانقطاع، مع فحوصات صحة ونشر سريع عبر Docker. استقرار وموثوقية عالية.",
-    p3_desc: "أداة لإنشاء حزم إعادة إنتاج مشكلات GitHub مع حماية الخصوصية من بيانات المستودع المحلي بدون تسريب مفاتيح أو كود خاص.",
-    link_site: "الموقع المباشر",
-    link_repo: "عرض المستودع",
-    exp_kicker: "ما أبنيه",
-    exp_title: "محاور التركيز الهندسي",
-    exp_sub: "هندسة برمجية عالية الموثوقية لفرق التطوير وبيئات العمل الذاتية للذكاء الاصطناعي.",
-    feat1_t: "ذاكرة الوكلاء وبوابات MCP",
-    feat1_d: "تصميم محركات سياق مستمرة باستخدام بحث SQLite FTS5 BM25، وتسليم المهام بين الوكلاء، والتجميع التلقائي لملفات قواعد AGENTS.md.",
-    feat2_t: "توجيه LLM المرن وFailover",
-    feat2_d: "بناء بوابات بروكسي ذاتية الشفاء توفر تبديلاً فورياً بين المزودين (Gemini وDeepSeek وOpenAI) وتقليص استهلاك التوكنز.",
-    feat3_t: "حماية Node2Shell وتعمية الأسرار",
-    feat3_d: "تطبيق حدود أمان صارمة، قفل فك ضغط Brotli، وتعمية مفاتيح API قبل لمسها للقرص الصلب نهائياً.",
-    feat4_t: "الـ DevOps وهندسة الحاويات",
-    feat4_d: "بناء وإدارة حاويات Docker، وأتمتة مسارات النشر المستمر GitHub Actions، وإدارة بيئات التشغيل بكفاءة.",
-    feat5_t: "عمليات البيانات والتدقيق الدقيق",
-    feat5_d: "مطابقة عقود استثمارية سطراً بسطر بنسبة خطأ صفرية، ونمذجة بيانات الأعمال وسلاسل الإمداد بدقة مطلقة.",
-    feat6_t: "تطبيقات الويب والموبايل",
-    feat6_d: "تطوير واجهات مستخدم متعددة المنصات باستخدام Flutter وDart، وتطبيقات ويب سريعة الاستجابة وخدمات خلفية بـ TypeScript.",
-    skills_kicker: "صندوق الأدوات",
-    skills_title: "التقنيات واللغات",
-    skills_sub: "حزمة أدوات مجربة وميدانية تغطي هندسة النظم والذكاء الاصطناعي والأتمتة السحابية.",
-    col_lang: "لغات البرمجة",
-    col_ai: "الذكاء الاصطناعي وMCP",
-    col_ops: "الـ DevOps والبنية التحتية",
-    col_biz: "البيانات والأنظمة",
-    con_kicker: "لنبنِ معاً",
-    con_title: "هل لديك مشروع مميز أو تحدٍ تقني؟",
-    con_sub: "سواء كنت تبني أنظمة وكلاء ذكاء اصطناعي، أو تصمم بنية تحتية مرنة، أو تبحث عن تعاون تقني احترافي — يسعدني التواصل معك."
+    welcome: "⚡ مرحباً بك في واجهة التيرمينال التفاعلية للمطور أحمد عادل سراج.",
+    hint: "اكتب 'help' لعرض كل الأوامر، أو اضغط على الأزرار الموجودة في الشريط السفلي.",
+    whoami: "أحمد عادل سراج — مطور برمجيات · مهندس DevOps · صانع أدوات الذكاء الاصطناعي",
+    loc: "مصر 🇪🇬 · عمل عن بعد / دولي",
+    bio: "أصمم وأبني بوابات ذاكرة محلية لوكلاء الذكاء الاصطناعي، وموزعات LLM مرنة، وأنظمة تدقيق بيانات مؤتمتة. تركيزي الأساسي على الأنظمة المحلية، والحماية الصارمة، ومنح الوكلاء سياقاً حقيقياً لا يضيع.",
+    cmd_not_found: "أمر غير معروف. اكتب 'help' لعرض الأوامر المتاحة.",
+    help_title: "الأوامر المتاحة في النظام:",
+    help_list: [
+      ["about", "عرض النبذة التعريفية والخبرات الهندسية"],
+      ["projects", "استعراض المشاريع ومستودعات الأكواد مفتوحة المصدر"],
+      ["mindgate", "تفاصيل مشروع بوابة العقل MindGate MCP المعروض على Product Hunt"],
+      ["skills", "مصفوفة اللغات والتقنيات وأدوات الـ DevOps"],
+      ["contact", "روابط التواصل المهني والشبكات"],
+      ["stats", "إحصائيات المطور ومؤشرات الأداء"],
+      ["matrix", "تشغيل أو إيقاف تأثير مطر الماتريكس"],
+      ["clear", "مسح شاشة التيرمينال"],
+      ["arabic", "التحويل للغة العربية"],
+      ["english", "التحويل للغة الإنجليزية"]
+    ]
   }
 };
 
-const root = document.documentElement;
-const toggleBtn = document.getElementById("langToggle");
+// Clock updater
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toTimeString().split(' ')[0] + " UTC+2";
+}
+setInterval(updateClock, 1000);
+updateClock();
 
-function applyLang(lang) {
-  root.setAttribute("lang", lang);
-  root.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (I18N[lang] && I18N[lang][key] !== undefined) {
-      el.innerHTML = I18N[lang][key];
-    }
-  });
-  toggleBtn.textContent = lang === "ar" ? "English" : "عربي";
-  try { localStorage.setItem("aaserag-lang", lang); } catch {}
+const termOutput = document.getElementById('termOutput');
+const cliInput = document.getElementById('cliInput');
+const termBody = document.getElementById('termBody');
+
+function printRaw(html) {
+  const el = document.createElement('div');
+  el.innerHTML = html;
+  termOutput.appendChild(el);
+  termBody.scrollTop = termBody.scrollHeight;
 }
 
-toggleBtn.addEventListener("click", () => {
-  applyLang(root.getAttribute("lang") === "ar" ? "en" : "ar");
+function printPrompt(cmd) {
+  printRaw(`
+    <div style="display:flex; gap:10px; align-items:center; margin-top:8px;">
+      <span style="color:var(--emerald-live); font-weight:700;">aaserag@devbox</span>:<span style="color:var(--indigo-bright);">~</span><span style="color:var(--cyan-bright);">$</span>
+      <span style="color:#fff; font-weight:600;">${cmd}</span>
+    </div>
+  `);
+}
+
+function printWelcome() {
+  const t = I18N[currentLang];
+  printRaw(`
+    <div class="ascii-banner">${ASCII_ART}</div>
+    <div style="margin-bottom: 8px;">
+      <span class="cli-badge badge-indigo">SYSTEM READY</span>
+      <span class="cli-badge badge-cyan">MCP ARCHITECT</span>
+      <span class="cli-badge badge-emerald">PH MAKER</span>
+    </div>
+    <div class="cli-title">${t.whoami}</div>
+    <div class="cli-desc">${t.bio}</div>
+    <div style="color:var(--cyan-bright); font-size:0.82rem; margin: 6px 0;">
+      <i class="fas fa-info-circle"></i> ${t.hint}
+    </div>
+  `);
+}
+
+// Commands execution
+function runCommand(cmdText) {
+  const raw = cmdText.trim();
+  if (!raw) return;
+
+  const parts = raw.split(" ");
+  const cmd = parts[0].toLowerCase();
+
+  printPrompt(raw);
+  commandHistory.push(raw);
+  historyIndex = commandHistory.length;
+
+  const t = I18N[currentLang];
+
+  switch(cmd) {
+    case 'help':
+    case '?':
+      let helpHtml = `<div style="color:var(--indigo-bright); font-weight:700; margin:6px 0;">${t.help_title}</div>`;
+      helpHtml += `<table class="skills-cli-table">`;
+      t.help_list.forEach(([c, d]) => {
+        helpHtml += `
+          <tr>
+            <td style="color:var(--cyan-bright); font-weight:700; width:120px; cursor:pointer;" onclick="runCommand('${c}')">
+              <i class="fas fa-chevron-right" style="font-size:0.68rem;"></i> ${c}
+            </td>
+            <td style="color:var(--text-muted);">${d}</td>
+          </tr>
+        `;
+      });
+      helpHtml += `</table>`;
+      printRaw(helpHtml);
+      break;
+
+    case 'about':
+    case 'whoami':
+      printRaw(`
+        <div class="cli-card">
+          <div class="card-headline">
+            <span class="card-title">Ahmed Adel Serag (Dola)</span>
+            <span class="cli-badge badge-emerald">Available for Engineering</span>
+          </div>
+          <div class="cli-desc">
+            ${currentLang === 'en' 
+              ? "Specialized in backend systems, AI agent memory architectures, and resilient infrastructure. Creator of MindGate MCP (a local-first memory gateway for AI coding agents) and SmartCore LLM Proxy (resilient failover gateway)."
+              : "متخصص في هندسة النظم الخلفية، وبوابات ذاكرة وكلاء الذكاء الاصطناعي، والبنية التحتية المقاومة للأعطال. مبتكر MindGate MCP (بوابة الذاكرة المحلية للوكلاء) وموزع SmartCore LLM Proxy."}
+          </div>
+          <div style="font-size:0.82rem; color:var(--text-main); margin-top:8px;">
+            <div><i class="fas fa-map-marker-alt" style="color:var(--rose-alert); width:20px;"></i> <b>Location:</b> Egypt 🇪🇬 (Remote / Global Collaborations)</div>
+            <div><i class="fas fa-shield-alt" style="color:var(--cyan-bright); width:20px;"></i> <b>Security Focus:</b> Node2Shell Hardening, Secret Scrubbing, Local-First Data</div>
+            <div><i class="fas fa-brain" style="color:var(--purple-neon); width:20px;"></i> <b>AI Focus:</b> MCP Gateways, SQLite FTS5 BM25, Multi-Agent Memory Handoffs</div>
+            <div><i class="fas fa-chart-line" style="color:var(--emerald-live); width:20px;"></i> <b>Data Operations:</b> Financial & Contract Reconciliation with 0% Discrepancy</div>
+          </div>
+        </div>
+      `);
+      break;
+
+    case 'projects':
+    case 'ls':
+    case 'repos':
+      printRaw(`
+        <div style="color:var(--indigo-bright); font-weight:700; margin:6px 0;">🚀 SHIPPED OPEN-SOURCE PROJECTS:</div>
+
+        <!-- MindGate MCP -->
+        <div class="cli-card">
+          <div class="card-headline">
+            <span class="card-title">🧠 MindGate MCP (بوابة العقل)</span>
+            <span class="cli-badge badge-orange"><i class="fab fa-product-hunt"></i> Featured on Product Hunt</span>
+          </div>
+          <div class="cli-desc">
+            ${currentLang === 'en'
+              ? "Local-first, Node2Shell-hardened MCP memory & context gateway for AI coding agents. Shared SQLite FTS5 memory across Antigravity, Cursor, Claude, OpenCode, and Codex. Zero cloud, zero data leakage."
+              : "بوابة ذاكرة محلية ومؤمنة ضد ثغرات Node2Shell لوكلاء البرمجة الذكية. ذاكرة SQLite FTS5 مشتركة بين Antigravity وCursor وClaude وCodex بدون سحابة وبدون تسريب بيانات."}
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">TypeScript</span>
+            <span class="card-tag">SQLite FTS5</span>
+            <span class="card-tag">Model Context Protocol</span>
+            <span class="card-tag">Security Hardened</span>
+          </div>
+          <div class="card-actions">
+            <a class="cli-link ph-link" href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a>
+            <a class="cli-link" href="https://aaserag1.github.io/mindgate-mcp/" target="_blank"><i class="fas fa-globe"></i> Live Website</a>
+            <a class="cli-link" href="https://github.com/aaserag1/mindgate-mcp" target="_blank"><i class="fab fa-github"></i> GitHub Source</a>
+          </div>
+        </div>
+
+        <!-- SmartCore LLM Proxy -->
+        <div class="cli-card">
+          <div class="card-headline">
+            <span class="card-title">⚡ SmartCore-LLM-Proxy</span>
+            <span class="cli-badge badge-indigo">Failover Gateway</span>
+          </div>
+          <div class="cli-desc">
+            ${currentLang === 'en'
+              ? "OpenAI-compatible local LLM gateway for Hermes AI with secure Gemini-to-DeepSeek fallback, automated retries, load balancing, Docker orchestration, and cross-platform run scripts."
+              : "بوابة محلية متوافقة مع OpenAI توفر تحويلاً ذكياً تلقائياً بين Gemini وDeepSeek عند الانقطاع، مع فحوصات صحة ونشر سريع عبر Docker."}
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Python</span>
+            <span class="card-tag">Docker</span>
+            <span class="card-tag">LiteLLM</span>
+            <span class="card-tag">Gemini & DeepSeek</span>
+          </div>
+          <div class="card-actions">
+            <a class="cli-link" href="https://github.com/aaserag1/SmartCore-LLM-Proxy" target="_blank"><i class="fab fa-github"></i> View Repo</a>
+          </div>
+        </div>
+
+        <!-- ReproKit -->
+        <div class="cli-card">
+          <div class="card-headline">
+            <span class="card-title">🔧 ReproKit</span>
+            <span class="cli-badge badge-cyan">Privacy First</span>
+          </div>
+          <div class="cli-desc">
+            ${currentLang === 'en'
+              ? "Privacy-first GitHub issue repro bundle generator from local repository metadata without leaking credentials or proprietary code."
+              : "أداة لإنشاء حزم إعادة إنتاج مشكلات GitHub مع حماية الخصوصية من بيانات المستودع المحلي بدون تسريب مفاتيح أو كود خاص."}
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">JavaScript</span>
+            <span class="card-tag">Git Metadata</span>
+            <span class="card-tag">Redaction</span>
+          </div>
+          <div class="card-actions">
+            <a class="cli-link" href="https://github.com/aaserag1/reprokit" target="_blank"><i class="fab fa-github"></i> View Repo</a>
+          </div>
+        </div>
+      `);
+      break;
+
+    case 'mindgate':
+      printRaw(`
+        <div class="cli-card" style="border-left-color: var(--amber-warn);">
+          <div class="card-headline">
+            <span class="card-title">🧠 MindGate MCP (بوابة العقل)</span>
+            <span class="cli-badge badge-orange"><i class="fab fa-product-hunt"></i> LIVE ON PRODUCT HUNT</span>
+          </div>
+          <div class="cli-desc">
+            One persistent, local memory shared by every AI coding agent — Antigravity, Cursor, Claude, OpenCode, Codex, Windsurf — through MCP.
+          </div>
+          <div style="background:rgba(0,0,0,0.4); padding:10px; border-radius:6px; font-family:var(--font-mono); font-size:0.8rem; margin:10px 0; color:var(--cyan-bright);">
+            $ npx -y mindgate-mcp init
+          </div>
+          <ul style="color:var(--text-muted); font-size:0.82rem; margin-left:20px; margin-bottom:12px;">
+            <li><b>10 MCP Tools:</b> remember_decision, recall_context, log_session_summary, sync_workspace_rules...</li>
+            <li><b>0 Network Calls:</b> 100% local SQLite file with chmod 600 protection</li>
+            <li><b>FTS5 BM25 Recall:</b> Microsecond semantic full-text keyword retrieval</li>
+            <li><b>Node2Shell Mitigation:</b> Brotli decompression lock for CVE-2026-111497</li>
+          </ul>
+          <div class="card-actions">
+            <a class="cli-link ph-link" href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank"><i class="fab fa-product-hunt"></i> Support on Product Hunt</a>
+            <a class="cli-link" href="https://aaserag1.github.io/mindgate-mcp/" target="_blank"><i class="fas fa-external-link-alt"></i> Landing Page</a>
+            <a class="cli-link" href="https://github.com/aaserag1/mindgate-mcp" target="_blank"><i class="fab fa-github"></i> Repository</a>
+          </div>
+        </div>
+      `);
+      break;
+
+    case 'skills':
+    case 'stack':
+      printRaw(`
+        <div style="color:var(--indigo-bright); font-weight:700; margin:6px 0;">🛠️ TECHNICAL CAPABILITIES MATRIX:</div>
+        <table class="skills-cli-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Stack & Tools</th>
+              <th>Proficiency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:#fff; font-weight:700;"><i class="fab fa-python" style="color:#38bdf8;"></i> Python & AI</td>
+              <td>FastAPI, LiteLLM, AsyncIO, Gemini API, DeepSeek</td>
+              <td>
+                <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:95%;"></div></div>
+                <span style="color:var(--cyan-bright); font-weight:700;">95%</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#fff; font-weight:700;"><i class="fab fa-js" style="color:#facc15;"></i> TypeScript</td>
+              <td>Node.js, MCP SDK, SQLite FTS5, ESM, Bundlers</td>
+              <td>
+                <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:92%;"></div></div>
+                <span style="color:var(--cyan-bright); font-weight:700;">92%</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#fff; font-weight:700;"><i class="fas fa-terminal" style="color:#38bdf8;"></i> Dart & Mobile</td>
+              <td>Flutter, Multi-platform apps, Responsive UI</td>
+              <td>
+                <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:85%;"></div></div>
+                <span style="color:var(--cyan-bright); font-weight:700;">85%</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#fff; font-weight:700;"><i class="fab fa-docker" style="color:#60a5fa;"></i> DevOps & Cloud</td>
+              <td>Docker, GitHub Actions, Linux, Containerization</td>
+              <td>
+                <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:90%;"></div></div>
+                <span style="color:var(--cyan-bright); font-weight:700;">90%</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#fff; font-weight:700;"><i class="fas fa-chart-pie" style="color:#34d399;"></i> Data Analytics</td>
+              <td>Agricultural Investment Audit, Contract Reconciliation</td>
+              <td>
+                <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:94%;"></div></div>
+                <span style="color:var(--cyan-bright); font-weight:700;">94%</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      `);
+      break;
+
+    case 'contact':
+    case 'social':
+    case 'email':
+      printRaw(`
+        <div class="cli-card">
+          <div class="card-headline">
+            <span class="card-title">📬 CONNECT & COLLABORATE</span>
+            <span class="cli-badge badge-indigo">Direct Channels</span>
+          </div>
+          <div class="cli-desc">
+            ${currentLang === 'en'
+              ? "Always open to discuss AI agent infrastructure, MCP tool development, open-source projects, and technical consulting."
+              : "متاح دائماً لمناقشة بنية وكلاء الذكاء الاصطناعي، وتطوير أدوات MCP، والمشاريع مفتوحة المصدر، والتعاون التقني الاستشاري."}
+          </div>
+          <div class="card-actions" style="margin-top:14px;">
+            <a class="cli-link" href="https://www.linkedin.com/in/aaserag/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn (aaserag)</a>
+            <a class="cli-link" href="https://x.com/ahmedadel790146" target="_blank"><i class="fab fa-x-twitter"></i> X (@ahmedadel790146)</a>
+            <a class="cli-link" href="https://www.facebook.com/aaserag0" target="_blank"><i class="fab fa-facebook"></i> Facebook (aaserag0)</a>
+            <a class="cli-link ph-link" href="https://www.producthunt.com/posts/mindgate-mcp" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a>
+            <a class="cli-link" href="https://github.com/aaserag1" target="_blank"><i class="fab fa-github"></i> GitHub (@aaserag1)</a>
+          </div>
+        </div>
+      `);
+      break;
+
+    case 'stats':
+      printRaw(`
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin:10px 0;">
+          <div style="background:var(--bg-elevated); padding:12px; border-radius:8px; border:1px solid var(--border-subtle); text-align:center;">
+            <div style="font-size:1.6rem; font-weight:800; color:var(--cyan-bright);">3+</div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Public Repos</div>
+          </div>
+          <div style="background:var(--bg-elevated); padding:12px; border-radius:8px; border:1px solid var(--border-subtle); text-align:center;">
+            <div style="font-size:1.6rem; font-weight:800; color:var(--indigo-bright);">100%</div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Local & Offline</div>
+          </div>
+          <div style="background:var(--bg-elevated); padding:12px; border-radius:8px; border:1px solid var(--border-subtle); text-align:center;">
+            <div style="font-size:1.6rem; font-weight:800; color:var(--emerald-live);">0</div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Data Leaks</div>
+          </div>
+          <div style="background:var(--bg-elevated); padding:12px; border-radius:8px; border:1px solid var(--border-subtle); text-align:center;">
+            <div style="font-size:1.6rem; font-weight:800; color:var(--amber-warn);">PH</div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Featured Maker</div>
+          </div>
+        </div>
+      `);
+      break;
+
+    case 'matrix':
+      toggleMatrix();
+      break;
+
+    case 'clear':
+    case 'cls':
+      termOutput.innerHTML = '';
+      break;
+
+    case 'arabic':
+    case 'ar':
+      setLang('ar');
+      break;
+
+    case 'english':
+    case 'en':
+      setLang('en');
+      break;
+
+    default:
+      printRaw(`<div style="color:var(--rose-alert); margin:4px 0;"><i class="fas fa-exclamation-triangle"></i> ${t.cmd_not_found}</div>`);
+      break;
+  }
+
+  cliInput.value = '';
+}
+
+// Matrix Animation Logic
+const canvas = document.getElementById('matrixCanvas');
+const ctx = canvas.getContext('2d');
+let matrixInterval = null;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const chars = '0123456789ABCDEF@#$%=+*<>[]{}MindGateSerag';
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(1);
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(6, 7, 10, 0.06)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#6366f1';
+  ctx.font = fontSize + 'px monospace';
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+function toggleMatrix() {
+  matrixActive = !matrixActive;
+  canvas.classList.toggle('active', matrixActive);
+  if (matrixActive) {
+    if (!matrixInterval) matrixInterval = setInterval(drawMatrix, 35);
+    printRaw(`<div style="color:var(--emerald-live);"><i class="fas fa-check"></i> Cyber Matrix visualizer ACTIVATED. (Click green dot or run 'matrix' to toggle)</div>`);
+  } else {
+    clearInterval(matrixInterval);
+    matrixInterval = null;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    printRaw(`<div style="color:var(--text-muted);"><i class="fas fa-times"></i> Cyber Matrix visualizer DEACTIVATED.</div>`);
+  }
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.getElementById('langBtn').textContent = lang === 'ar' ? 'English' : 'عربي';
+  printRaw(`<div style="color:var(--cyan-bright); font-weight:700;"><i class="fas fa-globe"></i> ${lang === 'ar' ? 'تم تحويل الواجهة إلى اللغة العربية بنجاح.' : 'Interface switched to English.'}</div>`);
+  printWelcome();
+}
+
+function toggleLang() {
+  setLang(currentLang === 'en' ? 'ar' : 'en');
+}
+
+function focusCli() {
+  cliInput.focus();
+}
+
+// Input handling
+cliInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    runCommand(cliInput.value);
+  } else if (e.key === 'ArrowUp') {
+    if (commandHistory.length > 0 && historyIndex > 0) {
+      historyIndex--;
+      cliInput.value = commandHistory[historyIndex];
+    }
+    e.preventDefault();
+  } else if (e.key === 'ArrowDown') {
+    if (historyIndex < commandHistory.length - 1) {
+      historyIndex++;
+      cliInput.value = commandHistory[historyIndex];
+    } else {
+      historyIndex = commandHistory.length;
+      cliInput.value = '';
+    }
+    e.preventDefault();
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    const val = cliInput.value.toLowerCase().trim();
+    if (!val) return;
+    const candidates = ['about', 'projects', 'mindgate', 'skills', 'contact', 'stats', 'matrix', 'clear', 'help', 'arabic', 'english'];
+    const matched = candidates.find(c => c.startsWith(val));
+    if (matched) cliInput.value = matched;
+  }
 });
 
-try {
-  if (localStorage.getItem("aaserag-lang") === "ar") applyLang("ar");
-} catch {}
-
-// Navbar scroll shadow
-const nav = document.getElementById("nav");
-window.addEventListener("scroll", () => {
-  nav.classList.toggle("scrolled", window.scrollY > 30);
-}, { passive: true });
-
-// Terminal Simulated Interactive Script
-const SCRIPT = [
-  { cls: "t-dim",   text: "# 09:00 — Developer workspace initialization..." },
-  { cls: "t-agent", text: "$ whoami" },
-  { cls: "t-str",   text: "> Ahmed Adel Serag (@aaserag1) · Egypt 🇪🇬" },
-  { cls: "t-agent", text: "$ cat active_stack.json" },
-  { cls: "t-str",   text: '  { "core": ["Python", "TypeScript", "Dart", "Docker"], "role": "Systems & AI" }' },
-  { cls: "t-ok",    text: "✓ Environment ready · Local-first enabled" },
-  { cls: "t-agent", text: "$ npx -y mindgate-mcp status" },
-  { cls: "t-tool",  text: "● MindGate MCP: SQLite FTS5 active · Node2Shell hardened · 0 network calls" },
-  { cls: "t-agent", text: "$ curl -s http://localhost:8000/health" },
-  { cls: "t-ok",    text: "✓ SmartCore Proxy: Gemini ↔ DeepSeek failover ready [0 errors]" },
-  { cls: "t-dim",   text: "# Ready for next mission." }
-];
-
-const termBody = document.getElementById("termBody");
-let scriptIndex = 0;
-
-function typeLine(line, done) {
-  const div = document.createElement("div");
-  div.className = "tline " + line.cls;
-  termBody.appendChild(div);
-  let i = 0;
-  const step = () => {
-    if (i <= line.text.length) {
-      div.textContent = line.text.slice(0, i);
-      i += 2;
-      setTimeout(step, 10);
-    } else {
-      done();
-    }
-  };
-  step();
-}
-
-function runScript() {
-  if (scriptIndex >= SCRIPT.length) {
-    setTimeout(() => {
-      termBody.innerHTML = "";
-      scriptIndex = 0;
-      runScript();
-    }, 5500);
-    return;
-  }
-  typeLine(SCRIPT[scriptIndex], () => {
-    scriptIndex += 1;
-    setTimeout(runScript, SCRIPT[scriptIndex - 1].cls === "t-ok" ? 600 : 130);
-  });
-}
-
-if (termBody) runScript();
-
-document.getElementById("year").textContent = new Date().getFullYear();
+// Initial boot
+printWelcome();
+focusCli();
 </script>
 
 </body>
