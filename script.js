@@ -4,7 +4,6 @@
 const products = [
   {name:'SmartCore ERP',category:['ENTERPRISE SOFTWARE','أنظمة المؤسسات'],description:['A modular platform connecting accounting, inventory, manufacturing, investment, and business operations in an Arabic-first experience.','منصة معيارية تربط المحاسبة والمخزون والتصنيع والاستثمار والعمليات التشغيلية، بتجربة مصممة باللغة العربية.'],tags:['Python','Django','ERP']},
   {name:'DukanPro POS',category:['RETAIL / DESKTOP & MOBILE','التجزئة / ديسكتوب وموبايل'],description:['Offline-first point of sale for retail. Desktop and mobile applications bring sales, inventory, shifts, and local data together.','نظام نقاط بيع يعمل محليًا لمحلات التجزئة. تطبيقات للديسكتوب والموبايل تجمع المبيعات والمخزون والورديات والبيانات المحلية.'],tags:['React','TypeScript','Electron','Capacitor','SQLite']},
-  {name:'DealFlow CRM',category:['SALES & WORKFLOW AUTOMATION','المبيعات وأتمتة العمل'],description:['A sales workflow platform for cleaning and distributing leads, syncing Excel follow-ups, and digitizing paper call sheets with AI vision.','منصة لتنظيف العملاء المحتملين وتوزيعهم، ومزامنة المتابعات من إكسيل، وتحويل كشوف المكالمات الورقية إلى بيانات باستخدام الرؤية بالذكاء الاصطناعي.'],tags:['Python','SQLite','Gemini Vision']},
   {name:'BeautyMart',category:['B2B COMMERCE','التجارة بين الشركات'],description:['A wholesale commerce platform with quantity rules, tiered pricing, inventory management, and a dedicated administration experience.','منصة تجارة جملة تدعم قواعد الكميات وأسعار الشرائح وإدارة المخزون، مع تجربة إدارة مخصصة للمنتجات والطلبات.'],tags:['Next.js','React','PostgreSQL','Drizzle']},
   {name:'KafeFlow POS',category:['HOSPITALITY SOFTWARE','أنظمة المطاعم والمقاهي'],description:['An offline desktop POS for cafés and restaurants, covering sales, stock, shifts, reporting, and local backups in an Arabic interface.','نظام نقاط بيع مكتبي للمقاهي والمطاعم يعمل دون إنترنت، ويغطي المبيعات والمخزون والورديات والتقارير والنسخ الاحتياطي بواجهة عربية.'],tags:['Electron','Node.js','SQLite']},
   {name:'MarkazPro',category:['EDUCATION OPERATIONS','إدارة المراكز التعليمية'],description:['A local-first education center system for students, groups, attendance, collections, teacher accounts, and role-based operations.','نظام محلي لإدارة المراكز التعليمية يشمل الطلاب والمجموعات والحضور والتحصيل وحسابات المدرسين وصلاحيات التشغيل.'],tags:['Node.js','Electron','SQLite']},
@@ -22,6 +21,34 @@ const arabic = {
  contactLabel:'عندك فكرة في بالك؟',contactTitle:'خلّينا نبني حاجة',contactEm:'تستحق الاستخدام.',contactText:'لمشروع جديد أو تعاون تقني أو نقاش عن الفكرة الجاية.',connectLinkedin:'تواصل على LinkedIn',contactLinkedin:'تواصل مع أحمد على LinkedIn',backTop:'إلى أعلى الصفحة',footerName:'أحمد عادل سراج'
 };
 
+Object.assign(arabic, {
+ heroDescription:'أنا أحمد عادل سراج. أبني أنظمة أعمال متكاملة وأدوات ذكاء اصطناعي عملية؛ منها DealFlow CRM، منظومة مبيعات مترابطة للويب والموبايل والديسكتوب.',
+ flagship:'مفتوح المصدر / أدوات الذكاء الاصطناعي',
+ exploreDealflow:'اكتشف DealFlow CRM',dealflowFlagship:'المشروع الرئيسي / منظومة المبيعات والعملاء',
+ dealflowLead:'سيستم مبيعات متكامل.\nمصمم حول فريق العمل.',
+ dealflowDescription:'منظومة CRM تربط الويب والموبايل والديسكتوب. من استقبال الليدز وتوزيعها إلى المتابعة اليومية والإدارة، في وركفلو واحد؛ مع مساحة عمل مصممة للموبايل تجعل التعامل مع الليدز أسهل وأبسط أثناء الحركة.',
+ dealflowPlatforms:'تجارب الاستخدام المتاحة',dealflowWeb:'منصة ويب',dealflowMobile:'ويب آب للموبايل',dealflowDesktop:'ويب آب للديسكتوب',discussDealflow:'نتكلم عن DealFlow',
+ dealflowVisual:'مخطط تجربة مندوب المبيعات على الموبايل: يفتح الليدز المسندة إليه، ويتصل أو يرسل رسالة، ثم يسجل الحالة والملاحظات وموعد المتابعة القادمة',
+ dealflowMobileFirst:'مساحة عمل السيلز، في جيبك',dealflowMyLeads:'عملائي. وخطوتي الجاية.',
+ dealflowPhoneOne:'افتح الليدز الخاصة بك',dealflowPhoneOneText:'عملاؤك المسندون إليك في مكان واحد.',
+ dealflowPhoneTwo:'ابدأ التواصل',dealflowPhoneTwoText:'اتصال أو محادثة على واتساب.',
+ dealflowPhoneThree:'كمّل المتابعة بسهولة',dealflowPhoneThreeText:'الحالة والملاحظات وموعد المتابعة.',dealflowIllustration:'مخطط توضيحي لتجربة الاستخدام',
+ dealflowMobileLabel:'تجربة الموبايل',dealflowMobileTitle:'تعامل مع الليد أينما كنت.',dealflowMobileText:'بوابة مبيعات مخصصة للمهام اليومية: الوصول لليد والتواصل معه وتحديث التقدم وتحديد المتابعة القادمة.',
+ dealflowTeamLabel:'تشغيل مترابط',dealflowTeamTitle:'فريق واحد. وركفلو متكامل.',dealflowTeamText:'تجربتان منفصلتان للإدارة والسيلز، تربطان التوزيع والأولويات وتاريخ النشاط ومتابعة الإدارة.',
+ dealflowPwaLabel:'ويب آب لكل شاشة',dealflowPwaTitle:'من المكتب إلى العمل الميداني.',dealflowPwaText:'استخدمه من المتصفح أو ثبّته كتطبيق PWA على الموبايل والكمبيوتر. تجربة تدعم طريقة عمل الفريق.',
+ dealflowWorkflow:'استكشف دورة العمل كاملة',
+ dealflowStepOne:'استقبال الليدز وتجهيزها',dealflowStepOneText:'استيراد الملفات وتوحيد أرقام الهواتف واستبعاد المكرر وغير الصحيح قبل بدء عمل الفريق.',
+ dealflowStepTwo:'ترتيب الأولويات والتوزيع',dealflowStepTwoText:'تنظيم الليدز حسب الأولوية وتوزيعها بحصص مرنة للفريق ومديري المبيعات.',
+ dealflowStepThree:'المتابعة من الموبايل',dealflowStepThreeText:'كل مندوب يتعامل مع الليدز المسندة إليه: يتواصل ويسجل الملاحظات ويغير الحالة ويحدد موعد المتابعة القادمة.',
+ dealflowStepFour:'الاحتفاظ بتاريخ النشاط',dealflowStepFourText:'سجل المكالمات والمتابعات يحفظ سياق التعامل، مع متابعة المستحق اليوم والمتأخر والقادم.',
+ dealflowStepFive:'ربط العمل الرقمي والميداني',dealflowStepFiveText:'مزامنة المتابعات من إكسيل، أو استخدام الرؤية بالذكاء الاصطناعي لتحويل الملاحظات المكتوبة وعلامات الكشوف الورقية إلى بيانات.',
+ dealflowStepSix:'الصورة الكاملة للإدارة',dealflowStepSixText:'بوابة إدارة مخصصة تجمع توزيع الفريق وإدارة الليدز ونشاط المتابعات والتقارير.'
+});
+
+Object.assign(arabic, {
+ demoAria:'تجربة تفاعلية مصغرة لدورة العمل في DealFlow',demoBadge:'تجربة تفاعلية',demoEyebrow:'جرّب دورة العمل',demoReset:'إعادة البدء ↺',demoTitle:'ليد. وخطوة جاية واضحة.',demoIntro:'جرّب تحريك ليد تجريبي خلال دورة المبيعات.',demoSample:'بيانات تجريبية',demoLeadName:'ليد تجريبي',demoStages:'مراحل متابعة الليد',demoStageNew:'جديد',demoStageAssigned:'مسند',demoStageContacted:'تم التواصل',demoStageFollowup:'متابعة',demoCodeLabel:'الحالة الحالية',demoFootnote:'مثال تفاعلي · بيانات تجريبية · إجراءات محاكاة'
+});
+
 const translatable = [...document.querySelectorAll('[data-i18n]')];
 const english = new Map(translatable.map(element => [element, element.innerHTML]));
 const attributeTranslations = ['aria', 'alt'].flatMap(type => [...document.querySelectorAll(`[data-i18n-${type}]`)].map(element => ({element,type,original:element.getAttribute(type === 'aria' ? 'aria-label' : 'alt')})));
@@ -31,6 +58,31 @@ const additionalProjects = document.getElementById('additional-projects');
 const menuButton = document.getElementById('menu-toggle');
 const mobileNav = document.getElementById('mobile-nav');
 let currentLanguage = 'en';
+let demoStep = 0;
+const demoStates = [
+ {status:'new',nextAction:'assign',scheduled:false,label:['New','جديد'],action:['Assign lead','إسناد الليد'],hint:['Start by assigning the lead.','ابدأ بإسناد الليد لمندوب.']},
+ {status:'assigned',nextAction:'contact',scheduled:false,label:['Assigned','تم الإسناد'],action:['Log demo contact','تسجيل تواصل تجريبي'],hint:['The representative can now follow up.','الليد جاهز الآن لمتابعة المندوب.']},
+ {status:'contacted',nextAction:'schedule_followup',scheduled:false,label:['Contacted','تم التواصل'],action:['Schedule follow-up','تحديد متابعة'],hint:['Keep the conversation moving with a next step.','حدد خطوة جاية لاستكمال المتابعة.']},
+ {status:'followup_scheduled',nextAction:'follow_up',scheduled:true,label:['Follow-up scheduled','تم تحديد المتابعة'],action:['Workflow complete','اكتملت التجربة'],hint:['A follow-up is scheduled. Reset to try again.','تم تحديد المتابعة. أعد البدء لتجربة الدورة مرة أخرى.']}
+];
+
+function renderHeroDemo() {
+ const state = demoStates[demoStep];
+ const languageIndex = currentLanguage === 'ar' ? 1 : 0;
+ document.getElementById('demo-status').textContent = state.label[languageIndex];
+ document.getElementById('demo-action-label').textContent = state.action[languageIndex];
+ document.getElementById('demo-hint').textContent = state.hint[languageIndex];
+ document.getElementById('demo-run').disabled = demoStep === demoStates.length - 1;
+ const code = document.getElementById('demo-code');
+ code.replaceChildren();
+ const token = (content,className) => { const span=document.createElement('span');span.className=className;span.textContent=content;return span; };
+ code.append(token('const','code-keyword'),document.createTextNode(' lead = {\n  id: '),token('"demo-lead"','code-string'),document.createTextNode(',\n  status: '),token(JSON.stringify(state.status),'code-string'),document.createTextNode(',\n  next_action: '),token(JSON.stringify(state.nextAction),'code-string'),document.createTextNode(',\n  followup_scheduled: '),token(String(state.scheduled),'code-keyword'),document.createTextNode('\n};'));
+ document.querySelectorAll('.demo-stages li').forEach((element,index) => {
+  element.classList.toggle('is-complete',index < demoStep);
+  element.classList.toggle('is-current',index === demoStep);
+  if(index === demoStep) element.setAttribute('aria-current','step'); else element.removeAttribute('aria-current');
+ });
+}
 
 function projectCard(project, isArabic) {
  const article = document.createElement('article');
@@ -94,10 +146,13 @@ function setLanguage(language, persist = false) {
  languageButton.setAttribute('aria-label',isArabic ? 'Switch to English' : 'Switch to Arabic');
  document.title = isArabic ? 'أحمد عادل سراج — مطور برمجيات وصانع أدوات الذكاء الاصطناعي' : 'Ahmed Adel Serag — Software Engineer & AI Tooling Builder';
  renderProducts(isArabic);
+ renderHeroDemo();
  closeMenu();
  if(persist) { try { localStorage.setItem('serag-language',currentLanguage); } catch { /* Storage is optional. */ } }
 }
 
+document.getElementById('demo-run').addEventListener('click',() => { if(demoStep < demoStates.length - 1) { demoStep++;renderHeroDemo(); } });
+document.getElementById('demo-reset').addEventListener('click',() => { demoStep=0;renderHeroDemo(); });
 languageButton.addEventListener('click',() => setLanguage(currentLanguage === 'en' ? 'ar' : 'en',true));
 moreButton.addEventListener('click',() => { const expand=moreButton.getAttribute('aria-expanded') !== 'true'; additionalProjects.hidden = !expand; moreButton.setAttribute('aria-expanded',String(expand)); updateMoreLabel(); });
 menuButton.addEventListener('click',() => { const expand=menuButton.getAttribute('aria-expanded') !== 'true'; mobileNav.hidden=!expand; menuButton.setAttribute('aria-expanded',String(expand)); });
