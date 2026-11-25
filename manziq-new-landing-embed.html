@@ -1372,6 +1372,12 @@
       }
 
       const htmlEl = document.documentElement;
+      // Odoo pins dir=rtl on <html>; flip the embed's own container instead
+      const embedRoot = (function () {
+        const h = document.querySelector('header.glass-nav');
+        if (h && h.parentElement) return h.parentElement;
+        return document.currentScript ? document.currentScript.parentElement : null;
+      })();
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
       function applyTheme(t) {
@@ -1534,6 +1540,7 @@
         lang = l;
         htmlEl.setAttribute('lang', lang);
         htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        if (embedRoot) { embedRoot.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); embedRoot.style.direction = lang === 'ar' ? 'rtl' : 'ltr'; }
         if (langToggle) langToggle.textContent = lang === 'ar' ? 'EN' : 'عربي';
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const k = el.getAttribute('data-i18n');
