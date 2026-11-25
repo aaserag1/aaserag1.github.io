@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MANZIQ | أنظمة ERP وCRM وأتمتة أعمال الشركات</title>
+  <meta name="description" content="نبني أنظمة ERP وCRM ونقاط بيع، ونطور واجهات ذكية فوق أنظمة شركتك الحالية لتسريع العمل وإلغاء الإدخالات اليدوية." />
+
+  <!-- Google Fonts: Cairo (AR), Inter (EN), JetBrains Mono (Code/Webhooks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* =========================================================
+       1. DESIGN TOKENS (OBSIDIAN DARK DEFAULT + CRISP LIGHT)
+       ========================================================= */
+    :root {
+      --bg-main: #050709;
+      --bg-surface: #0b1015;
+      --bg-subtle: #111820;
+      --bg-glass: rgba(11, 16, 21, 0.78);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(16, 185, 129, 0.4);
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --accent: #06b6d4;
+      --spotlight: rgba(16, 185, 129, 0.14);
+      --dot-color: rgba(148, 163, 184, 0.16);
+      --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.75);
+      --font-ar: 'Cairo', system-ui, sans-serif;
+      --font-en: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html[data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: rgba(15, 23, 42, 0.1);
+      --border-strong: rgba(5, 150, 105, 0.45);
+      --primary: #059669;
+      --primary-hover: #047857;
+      --accent: #0891b2;
+      --spotlight: rgba(5, 150, 105, 0.08);
+      --dot-color: rgba(15, 23, 42, 0.1);
+      --shadow-card: 0 18px 40px -18px rgba(15, 23, 42, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+      font-family: var(--font-ar);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    html[lang="en"] { font-family: var(--font-en); }
+    .font-mono-code { font-family: var(--font-mono); }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .bg-main { background-color: var(--bg-main); }
+    .bg-surface { background-color: var(--bg-surface); }
+    .bg-subtle { background-color: var(--bg-subtle); }
+    .text-main { color: var(--text-main); }
+    .text-muted { color: var(--text-muted); }
+    .border-theme { border-color: var(--border-color); }
+
+    /* =========================================================
+       2. ANIMATED DOT-GRID HERO & GRADIENT TEXT
+       ========================================================= */
+    .hero-grid-bg {
+      background-image:
+        radial-gradient(circle at 75% 15%, rgba(16, 185, 129, 0.16), transparent 45%),
+        radial-gradient(circle at 18% 80%, rgba(6, 182, 212, 0.13), transparent 42%),
+        radial-gradient(var(--dot-color) 1.2px, transparent 1.2px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =========================================================
+       3. GLASSMORPHIC NAVBAR & 3PX SCROLL PROGRESS BAR
+       ========================================================= */
+    .glass-nav {
+      background-color: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    #scrollProgress {
+      position: absolute;
+      bottom: -1px;
+      inset-inline-start: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+      z-index: 60;
+    }
+
+    /* =========================================================
+       4. CURSOR SPOTLIGHT CARDS & 3D TILT MOCKUP
+       ========================================================= */
+    .spotlight-card {
+      position: relative;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), var(--spotlight), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .spotlight-card:hover::before { opacity: 1; }
+    .spotlight-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+    }
+    .spotlight-card > * { position: relative; z-index: 2; }
+
+    .featured-card {
+      border: 1.5px solid var(--primary) !important;
+      box-shadow: 0 0 40px -12px rgba(16, 185, 129, 0.35), var(--shadow-card);
+    }
+
+    .tilt-wrapper {
+      perspective: 1100px;
+    }
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out;
+    }
+
+    /* =========================================================
+       5. SHIMMER PRIMARY BUTTON & PULSE WHATSAPP
+       ========================================================= */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 10px 26px -8px rgba(16, 185, 129, 0.55);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -80%;
+      width: 55%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+      transform: skewX(-25deg);
+      transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .btn-primary:hover::after { left: 135%; }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(16, 185, 129, 0.7);
+    }
+
+    .wa-pulse::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 2px solid #22c55e;
+      animation: waRing 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      pointer-events: none;
+    }
+    @keyframes waRing {
+      0% { transform: scale(0.95); opacity: 0.85; }
+      70% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    /* =========================================================
+       6. REVEAL ANIMATIONS & RANGE SLIDER STYLING
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .wa-pulse::before { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--bg-subtle);
+      height: 8px;
+      border-radius: 999px;
+      outline: none;
+      border: 1px solid var(--border-color);
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+      border: 2px solid #fff;
+    }
+
+    /* FAQ Accordion */
+    .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+    .faq-item.open .faq-body { grid-template-rows: 1fr; }
+    .faq-inner { overflow: hidden; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+
+    /* PDF Paper Preview */
+    .pdf-paper {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+
+  <!-- =========================================================
+       1. FLOATING GLASSMORPHIC NAVBAR
+       ========================================================= -->
+  <header class="glass-nav fixed top-0 inset-x-0 z-50 h-20">
+    <div id="scrollProgress"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4">
+      <!-- Brand -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <polyline points="7 14 10 9 12 12 14 9 17 14"></polyline>
+          </svg>
+        </div>
+        <div class="flex flex-col leading-none">
+          <span class="text-lg font-black tracking-tight text-main">MANZIQ<span class="text-emerald-400">.</span></span>
+          <span class="text-[10px] font-mono-code text-muted tracking-widest uppercase">manziq.cloud</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-muted">
+        <a href="#hero" class="hover:text-emerald-400 transition-colors" data-i18n="navAbout">من نحن</a>
+        <a href="#services" class="hover:text-emerald-400 transition-colors" data-i18n="navServices">خدماتنا</a>
+        <a href="#playground" class="text-emerald-400 hover:text-cyan-400 transition-colors flex items-center gap-1.5" data-i18n="navAuto">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>الأتمتة
+        </a>
+        <a href="#portfolio" class="hover:text-emerald-400 transition-colors" data-i18n="navPortfolio">أعمالنا</a>
+        <a href="#pricing" class="hover:text-emerald-400 transition-colors" data-i18n="navPricing">الأسعار</a>
+        <a href="#faq" class="hover:text-emerald-400 transition-colors" data-i18n="navFaq">الأسئلة الشائعة</a>
+        <a href="#contact" class="hover:text-emerald-400 transition-colors" data-i18n="navContact">تواصل معنا</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2.5">
+        <button id="langToggle" type="button" class="h-10 px-3 rounded-xl border border-theme bg-surface text-xs font-extrabold text-main hover:border-emerald-500 transition-colors">EN</button>
+        <button id="themeToggle" type="button" class="w-10 h-10 rounded-xl border border-theme bg-surface flex items-center justify-center text-main hover:border-emerald-500 transition-colors" aria-label="Toggle Theme">
+          <svg id="themeIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="hidden sm:inline-flex btn-primary px-4 py-2.5 rounded-xl text-sm" data-i18n="navCta">اطلب استشارة</a>
+        <button id="mobileBtn" type="button" class="lg:hidden w-10 h-10 rounded-xl border border-theme bg-surface flex items-center justify-center text-main" aria-label="Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-surface border-b border-theme px-6 py-5 space-y-3 shadow-2xl">
+      <a href="#hero" class="block py-1.5 text-sm font-bold text-main" data-i18n="navAbout">من نحن</a>
+      <a href="#services" class="block py-1.5 text-sm font-bold text-main" data-i18n="navServices">خدماتنا</a>
+      <a href="#playground" class="block py-1.5 text-sm font-bold text-emerald-400" data-i18n="navAuto">الأتمتة</a>
+      <a href="#portfolio" class="block py-1.5 text-sm font-bold text-main" data-i18n="navPortfolio">أعمالنا</a>
+      <a href="#pricing" class="block py-1.5 text-sm font-bold text-main" data-i18n="navPricing">الأسعار</a>
+      <a href="#faq" class="block py-1.5 text-sm font-bold text-main" data-i18n="navFaq">الأسئلة الشائعة</a>
+      <a href="#contact" class="block py-1.5 text-sm font-bold text-main" data-i18n="navContact">تواصل معنا</a>
+      <a href="#contact" class="block text-center btn-primary py-2.5 rounded-xl text-sm mt-2" data-i18n="navCta">اطلب استشارة</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         2. HERO SECTION + INTERACTIVE 3D COMMAND CENTER
+         ========================================================= -->
+    <section id="hero" class="hero-grid-bg pt-32 pb-20 lg:pt-40 lg:pb-28 relative overflow-hidden border-b border-theme">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <!-- Left/Start Content -->
+          <div class="lg:col-span-6 reveal">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-surface border border-emerald-500/30 text-xs sm:text-sm font-extrabold text-emerald-400 mb-6 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span data-i18n="heroBadge">تطوير أنظمة المؤسسات والذكاء الاصطناعي</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.18] tracking-tight mb-6" data-i18n="heroTitle">
+              نبني الأنظمة التي تُدير <span class="text-gradient">شركتك بالكامل</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-muted leading-relaxed mb-8 max-w-xl" data-i18n="heroSub">
+              من أنظمة ERP وCRM ونقاط البيع إلى أتمتة الأنظمة القديمة وأدوات الذكاء الاصطناعي — أنظمة عملية مبنية لشركات حقيقية وتعمل في الإنتاج الآن.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mb-9">
+              <a href="#services" class="btn-primary px-7 py-3.5 rounded-2xl text-base inline-flex items-center gap-2">
+                <span data-i18n="heroCta1">استكشف الأنظمة</span>
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+              <a href="#playground" class="px-6 py-3.5 rounded-2xl text-base font-bold bg-surface border border-theme text-main hover:border-emerald-500 hover:text-emerald-400 transition-all inline-flex items-center gap-2">
+                <span>⚡</span>
+                <span data-i18n="heroCta2">جرّب محاكي الأتمتة</span>
+              </a>
+            </div>
+
+            <!-- Trust Pills -->
+            <div class="flex flex-wrap gap-2.5 text-xs font-bold">
+              <span class="px-3.5 py-1.5 rounded-xl bg-surface border border-theme text-muted flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span> <span data-i18n="pill1">Open Source MIT</span>
+              </span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-surface border border-theme text-muted flex items-center gap-1.5">
+                <span class="text-emerald-400">✓</span> <span data-i18n="pill2">Production ERP / CRM / POS</span>
+              </span>
+              <span class="px-3.5 py-1.5 rounded-xl bg-surface border border-theme text-muted flex items-center gap-1.5">
+                <span class="text-cyan-400">🛡</span> <span data-i18n="pill3">Node2Shell Security</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Right/End: Interactive 3D Command Center -->
+          <div class="lg:col-span-6 reveal tilt-wrapper">
+            <div id="heroTilt" class="tilt-card spotlight-card rounded-3xl p-5 sm:p-6 border border-emerald-500/30">
+              <!-- Top Bar -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-theme">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                  <span class="ms-2 text-xs font-mono-code text-muted">MANZIQ Command Center</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-mono-code font-bold flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> LIVE
+                </span>
+              </div>
+
+              <!-- Interactive Tabs -->
+              <div class="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-subtle border border-theme mb-5">
+                <button type="button" class="cc-tab active py-2 px-2 rounded-xl text-xs font-extrabold bg-emerald-500 text-white transition-all" data-tab="crm">DealFlow CRM</button>
+                <button type="button" class="cc-tab py-2 px-2 rounded-xl text-xs font-extrabold text-muted hover:text-main transition-all" data-tab="erp">SmartCore ERP</button>
+                <button type="button" class="cc-tab py-2 px-2 rounded-xl text-xs font-extrabold text-muted hover:text-main transition-all" data-tab="legacy">Legacy Wrapper</button>
+              </div>
+
+              <!-- Dynamic KPIs -->
+              <div class="grid grid-cols-3 gap-3 mb-5">
+                <div class="p-3.5 rounded-2xl bg-subtle border border-theme">
+                  <div id="ccLabel1" class="text-[11px] text-muted font-bold mb-1">صفقات الشهر</div>
+                  <div id="ccVal1" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono-code">148</div>
+                  <div id="ccSub1" class="text-[10px] text-emerald-500 font-bold mt-0.5">+24% ↑</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-subtle border border-theme">
+                  <div id="ccLabel2" class="text-[11px] text-muted font-bold mb-1">معدل التحويل</div>
+                  <div id="ccVal2" class="text-xl sm:text-2xl font-black text-cyan-400 font-mono-code">34.8%</div>
+                  <div id="ccSub2" class="text-[10px] text-muted mt-0.5">v4.5 Live</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-subtle border border-theme">
+                  <div id="ccLabel3" class="text-[11px] text-muted font-bold mb-1">تنبيهات واتساب</div>
+                  <div id="ccVal3" class="text-xl sm:text-2xl font-black text-main font-mono-code">1,290</div>
+                  <div id="ccSub3" class="text-[10px] text-emerald-400 font-bold mt-0.5">0.3s Latency</div>
+                </div>
+              </div>
+
+              <!-- Revenue / Throughput Sparkline SVG -->
+              <div class="p-4 rounded-2xl bg-subtle border border-theme mb-5">
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span id="ccChartTitle" class="font-bold text-main">نمو المبيعات اليومي (DealFlow)</span>
+                  <span class="font-mono-code text-emerald-400 font-bold">+38.4%</span>
+                </div>
+                <svg class="w-full h-16 overflow-visible" viewBox="0 0 320 60" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path id="ccSparkArea" d="M0,50 L45,42 L90,46 L135,28 L180,32 L225,18 L270,22 L320,6 L320,60 L0,60 Z" fill="url(#sparkGrad)"/>
+                  <path id="ccSparkLine" d="M0,50 L45,42 L90,46 L135,28 L180,32 L225,18 L270,22 L320,6" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Live Event Logs -->
+              <div id="ccLogs" class="space-y-2 text-xs font-mono-code">
+                <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-subtle/80 border border-theme">
+                  <span class="text-main truncate">POST /api/leads/assign → Sales_Team_A</span>
+                  <span class="text-emerald-400 font-bold shrink-0 ms-2">200 OK</span>
+                </div>
+                <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-subtle/80 border border-theme">
+                  <span class="text-main truncate">WA_NOTIFY → Client #842 (Instant)</span>
+                  <span class="text-cyan-400 font-bold shrink-0 ms-2">38ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. INTERACTIVE "LEGACY SYSTEM MODERNIZATION" PLAYGROUND
+         ========================================================= -->
+    <section id="playground" class="py-20 lg:py-28 bg-subtle border-b border-theme">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="pgBadge">
+            محاكي تفاعلي حي — جرّب بنفسك
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black mb-4" data-i18n="pgTitle">
+            طوّر سيستم شركتك القديم.. <span class="text-gradient">من غير ما تغيّره!</span>
+          </h2>
+          <p class="text-muted text-base sm:text-lg" data-i18n="pgSub">
+            اكتب أي بيانات عقد هنا واضغط إصدار؛ وشوف إزاي واجهة MANZIQ بترحّل البيانات للسيستم القديم عبر Webhook وتطلعلك العقد PDF جاهز للطباعة في لحظة.
+          </p>
+        </div>
+
+        <!-- Split Screen Playground -->
+        <div class="grid lg:grid-cols-12 gap-7 items-stretch">
+          <!-- Input Panel -->
+          <div class="lg:col-span-5 spotlight-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-extrabold flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-sm">1</span>
+                  <span data-i18n="pgInputTitle">واجهة الموظف المبسطة</span>
+                </h3>
+                <span class="text-[11px] font-mono-code text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg">MANZIQ UI</span>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-xs font-bold text-muted mb-1.5" for="pgClient" data-i18n="pgLblClient">اسم العميل / الشركة</label>
+                  <input id="pgClient" type="text" value="شركة النيل للاستثمار" class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main font-bold text-sm focus:outline-none focus:border-emerald-500" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-muted mb-1.5" for="pgAmount" data-i18n="pgLblAmount">قيمة العقد (جنيه مصري)</label>
+                  <input id="pgAmount" type="text" value="250,000" dir="ltr" class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main font-mono-code font-bold text-sm text-start focus:outline-none focus:border-emerald-500" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-muted mb-1.5" for="pgType" data-i18n="pgLblType">نوع العقد</label>
+                  <select id="pgType" class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main font-bold text-sm focus:outline-none focus:border-emerald-500">
+                    <option value="استثمار" data-i18n="pgOpt1">عقد استثمار وعوائد</option>
+                    <option value="توريد" data-i18n="pgOpt2">عقد توريد بضائع</option>
+                    <option value="خدمات" data-i18n="pgOpt3">عقد تقديم خدمات</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button id="pgRunBtn" type="button" class="w-full btn-primary py-4 rounded-2xl text-sm sm:text-base mt-6 flex items-center justify-center gap-2">
+              <span>⚡</span>
+              <span data-i18n="pgRunBtn">إصدار العقد ومزامنة السيستم الآن</span>
+            </button>
+          </div>
+
+          <!-- Execution Pipeline & Live Output Panel -->
+          <div class="lg:col-span-7 spotlight-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal">
+            <!-- 3-Step Pipeline -->
+            <div class="grid sm:grid-cols-3 gap-2.5 mb-5">
+              <div id="pipe1" class="p-3 rounded-xl bg-subtle border border-emerald-500/50 text-xs font-bold flex items-center justify-between">
+                <span data-i18n="pipe1">1. فحص البيانات</span>
+                <span id="pipe1St" class="text-emerald-400 font-mono-code">✓</span>
+              </div>
+              <div id="pipe2" class="p-3 rounded-xl bg-subtle border border-emerald-500/50 text-xs font-bold flex items-center justify-between">
+                <span data-i18n="pipe2">2. Webhook Sync</span>
+                <span id="pipe2St" class="text-emerald-400 font-mono-code">200 OK</span>
+              </div>
+              <div id="pipe3" class="p-3 rounded-xl bg-subtle border border-emerald-500/50 text-xs font-bold flex items-center justify-between">
+                <span data-i18n="pipe3">3. توليد PDF</span>
+                <span id="pipe3St" class="text-cyan-400 font-mono-code">Ready</span>
+              </div>
+            </div>
+
+            <!-- Split: Webhook JSON + Print-Ready PDF Preview -->
+            <div class="grid md:grid-cols-2 gap-4 flex-1">
+              <!-- JSON Webhook Payload -->
+              <div class="rounded-2xl bg-[#070b0f] border border-theme p-4 flex flex-col justify-between" dir="ltr">
+                <div class="flex items-center justify-between text-[11px] font-mono-code pb-2.5 mb-2.5 border-b border-slate-800">
+                  <span class="text-cyan-400 font-bold">POST /webhook/legacy-erp-sync</span>
+                  <span id="pgHttpBadge" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">200 OK (42ms)</span>
+                </div>
+                <pre id="pgJsonOut" class="text-[11px] font-mono-code text-emerald-300 leading-relaxed overflow-x-auto">{
+  "event": "contract.created",
+  "target": "LEGACY_ERP_DB",
+  "client": "شركة النيل للاستثمار",
+  "amount_egp": "250,000",
+  "type": "استثمار",
+  "pdf_status": "generated"
+}</pre>
+                <div class="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono-code text-slate-400 flex justify-between">
+                  <span>HMAC-SHA256 Verified</span>
+                  <span class="text-emerald-400">Zero Re-entry</span>
+                </div>
+              </div>
+
+              <!-- Dynamic Print-Ready PDF Contract Preview -->
+              <div class="pdf-paper rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden">
+                <div>
+                  <div class="flex items-center justify-between border-b border-slate-200 pb-2.5 mb-3">
+                    <div>
+                      <div class="text-xs font-black text-slate-900">MANZIQ AUTO-PDF</div>
+                      <div class="text-[10px] text-slate-500 font-mono-code" id="pdfRef">#CNT-2026-4092</div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold">PRINT READY</span>
+                  </div>
+                  <div class="space-y-2 text-xs">
+                    <div class="flex justify-between">
+                      <span class="text-slate-500" data-i18n="pdfClientLbl">الطرف الثاني:</span>
+                      <span id="pdfClientVal" class="font-extrabold text-slate-900">شركة النيل للاستثمار</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-500" data-i18n="pdfTypeLbl">نوع العقد:</span>
+                      <span id="pdfTypeVal" class="font-bold text-slate-800">استثمار</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-500" data-i18n="pdfAmtLbl">القيمة الإجمالية:</span>
+                      <span id="pdfAmtVal" class="font-black text-emerald-700 font-mono-code">250,000 EGP</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-500" data-i18n="pdfDateLbl">تاريخ الإصدار:</span>
+                      <span id="pdfDateVal" class="font-mono-code text-slate-700">2026-11-25</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Verified Stamp & Barcode -->
+                <div class="mt-4 pt-3 border-t border-dashed border-slate-300 flex items-center justify-between">
+                  <div class="text-[10px] font-extrabold text-emerald-700 border border-emerald-600 rounded px-2 py-0.5 rotate-[-3deg]">
+                    ✓ SYNCED & VERIFIED
+                  </div>
+                  <div class="flex gap-0.5 h-5 items-end" aria-hidden="true">
+                    <span class="w-0.5 h-full bg-slate-800"></span><span class="w-1 h-4 bg-slate-800"></span><span class="w-0.5 h-full bg-slate-800"></span><span class="w-1 h-full bg-slate-800"></span><span class="w-0.5 h-3 bg-slate-800"></span><span class="w-1 h-full bg-slate-800"></span><span class="w-0.5 h-full bg-slate-800"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Before vs After Comparison Bar -->
+        <div class="grid md:grid-cols-2 gap-4 mt-7 reveal">
+          <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-between text-xs sm:text-sm font-bold text-rose-300">
+            <span data-i18n="cmpOld">✕ الطريقة اليدوية القديمة: 45 دقيقة · وورد + إدخال مكرر</span>
+            <span class="font-mono-code">High Risk</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-between text-xs sm:text-sm font-bold text-emerald-300">
+            <span data-i18n="cmpNew">✓ طريقة MANZIQ: 12 ثانية · مزامنة فورية + صفر أخطاء</span>
+            <span class="font-mono-code">98% Faster</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. INTERACTIVE ROI & TIME-SAVED CALCULATOR
+         ========================================================= -->
+    <section id="roi" class="py-20 lg:py-24 border-b border-theme">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="spotlight-card rounded-3xl p-6 sm:p-10 reveal">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block px-4 py-1 rounded-full bg-cyan-500/15 text-cyan-400 text-xs font-extrabold mb-3" data-i18n="roiBadge">حاسبة العائد (ROI)</span>
+            <h2 class="text-2xl sm:text-3xl font-black mb-2" data-i18n="roiTitle">احسب شركتك هتوفر كام ساعة وكام جنيه شهرياً</h2>
+            <p class="text-sm text-muted" data-i18n="roiSub">حرّك المؤشرات حسب حجم فريقك وشوف الأثر المالي الفوري لأتمتة الإدخالات والعقود.</p>
+          </div>
+
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <!-- Sliders -->
+            <div class="lg:col-span-6 space-y-6">
+              <div>
+                <div class="flex justify-between text-sm font-bold mb-2">
+                  <span data-i18n="roiLblEmp">عدد الموظفين</span>
+                  <span id="roiEmpVal" class="text-emerald-400 font-mono-code text-base">8</span>
+                </div>
+                <input id="roiEmp" type="range" min="1" max="50" value="8" class="w-full" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-sm font-bold mb-2">
+                  <span data-i18n="roiLblDocs">عدد العقود / الفواتير يومياً</span>
+                  <span id="roiDocsVal" class="text-cyan-400 font-mono-code text-base">30</span>
+                </div>
+                <input id="roiDocs" type="range" min="5" max="200" step="5" value="30" class="w-full" />
+              </div>
+            </div>
+
+            <!-- Live Outputs -->
+            <div class="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+              <div class="p-5 rounded-2xl bg-subtle border border-theme text-center">
+                <div class="text-xs font-bold text-muted mb-1" data-i18n="roiOut1">الساعات الموفرة شهرياً</div>
+                <div id="roiHours" class="text-3xl sm:text-4xl font-black text-emerald-400 font-mono-code">275</div>
+                <div class="text-[11px] text-muted mt-1" data-i18n="roiOut1Sub">ساعة عمل / شهر</div>
+              </div>
+              <div class="p-5 rounded-2xl bg-subtle border border-emerald-500/40 text-center">
+                <div class="text-xs font-bold text-muted mb-1" data-i18n="roiOut2">التوفير المالي التقريبي</div>
+                <div id="roiMoney" class="text-3xl sm:text-4xl font-black text-cyan-400 font-mono-code">27,500</div>
+                <div class="text-[11px] text-emerald-400 font-bold mt-1" data-i18n="roiOut2Sub">جنيه مصري / شهر</div>
+              </div>
+              <div class="sm:col-span-2">
+                <a href="#contact" class="w-full btn-primary py-3.5 rounded-2xl text-sm flex items-center justify-center gap-2" data-i18n="roiCta">
+                  احجز جلسة تشخيص مجانية (20 دقيقة)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. BENTO-GRID SERVICES SECTION
+         ========================================================= -->
+    <section id="services" class="py-20 lg:py-28 bg-subtle border-b border-theme">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="srvBadge">خدماتنا</span>
+          <h2 class="text-3xl sm:text-4xl font-black mb-4" data-i18n="srvTitle">منظومة برمجية متكاملة للمؤسسات</h2>
+          <p class="text-muted text-base" data-i18n="srvDesc">أنظمة عملية مصممة على مقاس السوق المصري والعربي لتسريع التشغيل وزيادة المبيعات.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 cascade-grid">
+          <!-- 1. SmartCore ERP -->
+          <article class="spotlight-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5" data-i18n="srv1T">SmartCore ERP</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv1D">نظام متكامل لإدارة الشركة: المالية، المخازن، الموارد البشرية، عقود الاستثمار، ومركز قيادة موحّد.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-muted">
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Finance</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Inventory</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">HR</span>
+            </div>
+          </article>
+
+          <!-- 2. DealFlow CRM v4.5 -->
+          <article class="spotlight-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5" data-i18n="srv2T">DealFlow CRM v4.5</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv2D">إدارة العملاء المحتملين ومراحل البيع والنشاط اليومي مع تنبيهات واتساب فورية — يعمل في الإنتاج الآن.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-muted">
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Leads</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Pipeline</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">WhatsApp</span>
+            </div>
+          </article>
+
+          <!-- 3. Legacy Modernization -->
+          <article class="spotlight-card featured-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5 text-emerald-400" data-i18n="srv3T">تطوير وأتمتة الأنظمة القديمة</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv3D">بناء داشبورد حديثة فوق سيستم شركتك القديم لإلغاء الإدخالات المكررة وإصدار العقود PDF تلقائياً عبر Webhooks.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-emerald-400">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/15">Custom UI</span>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/15">Auto PDF</span>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/15">Webhooks</span>
+            </div>
+          </article>
+
+          <!-- 4. POS Systems -->
+          <article class="spotlight-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5" data-i18n="srv4T">نقاط البيع POS (DukanPro & KafeFlow)</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv4D">أنظمة كاشير موبايل وديسكتوب للمحلات التجارية والكافيهات والمطاعم مع إدارة مخزون وورديات.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-muted">
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Mobile POS</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Desktop</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Retail</span>
+            </div>
+          </article>
+
+          <!-- 5. AI Tools -->
+          <article class="spotlight-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4v2h2a4 4 0 0 1 0 8h-2v2a4 4 0 0 1-8 0v-2H6a4 4 0 0 1 0-8h2V6a4 4 0 0 1 4-4z"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5" data-i18n="srv5T">أدوات الذكاء الاصطناعي (MindGate)</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv5D">ذاكرة محلية لوكلاء البرمجة (13 أداة MCP) وبوابة SmartCore LLM Proxy للتحويل التلقائي بين Gemini وDeepSeek.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-muted">
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Open Source MIT</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">13 MCP Tools</span>
+            </div>
+          </article>
+
+          <!-- 6. E-Commerce -->
+          <article class="spotlight-card rounded-3xl p-7 flex flex-col justify-between reveal">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3 class="text-lg font-extrabold mb-2.5" data-i18n="srv6T">متاجر إلكترونية ومنصات ويب</h3>
+              <p class="text-sm text-muted leading-relaxed mb-5" data-i18n="srv6D">متاجر جملة وتجزئة ومنصات ويب ثنائية اللغة سريعة ومربوطة بواتساب لزيادة المبيعات.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-theme text-[11px] font-mono-code text-muted">
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Wholesale</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">Retail</span>
+              <span class="px-2.5 py-1 rounded-full bg-subtle">WhatsApp</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. FILTERABLE PORTFOLIO SECTION
+         ========================================================= -->
+    <section id="portfolio" class="py-20 lg:py-28 border-b border-theme">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="portBadge">أعمالنا</span>
+          <h2 class="text-3xl sm:text-4xl font-black mb-4" data-i18n="portTitle">مشاريع حقيقية، تعمل الآن</h2>
+          <p class="text-muted text-base" data-i18n="portDesc">تصفح أنظمتنا حسب الفئة — من أنظمة المؤسسات إلى أدوات الذكاء الاصطناعي.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap justify-center gap-2.5 mb-12 reveal">
+          <button type="button" class="filter-btn active px-5 py-2 rounded-full text-sm font-bold bg-emerald-500 text-white transition-all" data-filter="all" data-i18n="fAll">الكل</button>
+          <button type="button" class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-surface border border-theme text-muted hover:border-emerald-500 transition-all" data-filter="systems" data-i18n="fSys">أنظمة مؤسسات</button>
+          <button type="button" class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-surface border border-theme text-muted hover:border-emerald-500 transition-all" data-filter="pos" data-i18n="fPos">نقاط بيع</button>
+          <button type="button" class="filter-btn px-5 py-2 rounded-full text-sm font-bold bg-surface border border-theme text-muted hover:border-emerald-500 transition-all" data-filter="ai" data-i18n="fAi">ذكاء اصطناعي</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 cascade-grid">
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="systems">
+            <div class="h-40 bg-gradient-to-br from-emerald-950 via-[#0b1015] to-cyan-950 flex flex-col items-center justify-center p-6 border-b border-theme">
+              <img src="/web/image/486" alt="SmartCore ERP" class="h-12 w-auto mb-3 object-contain" loading="lazy" />
+              <div class="text-xl font-black text-emerald-400">SmartCore ERP</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">Command Center · Finance · HR</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p1C">نظام ERP متكامل</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p1D">إدارة المالية والمخازن والمبيعات وعقود الاستثمار في منصة واحدة.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-mono-code text-main flex justify-between"><span>Django · PostgreSQL</span><span>↗</span></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="systems">
+            <div class="h-40 bg-gradient-to-br from-cyan-950 via-[#0b1015] to-emerald-950 flex flex-col items-center justify-center p-6 border-b border-theme">
+              <img src="/web/image/487" alt="DealFlow CRM" class="h-12 w-auto mb-3 object-contain" loading="lazy" />
+              <div class="text-xl font-black text-cyan-400">DealFlow CRM</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">v4.5 · Production Live</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p2C">نظام CRM ومبيعات</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p2D">تتبع العملاء المحتملين والصفقات مع توزيع ذكي وتنبيهات واتساب.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-bold text-emerald-400 flex justify-between"><span data-i18n="p2M">يعمل في الإنتاج الآن</span><span>↗</span></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="ai">
+            <div class="h-40 bg-gradient-to-br from-slate-900 via-emerald-950 to-[#0b1015] flex flex-col items-center justify-center p-6 border-b border-theme">
+              <img src="/web/image/490" alt="MindGate MCP" class="h-12 w-auto mb-3 object-contain" loading="lazy" />
+              <div class="text-xl font-black text-emerald-300">MindGate MCP</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">13 MCP Tools · MIT License</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p3C">بوابة ذاكرة MCP</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p3D">ذاكرة محلية وسياق دائم لوكلاء البرمجة مع حماية Node2Shell.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-mono-code text-main flex justify-between"><span>TypeScript · SQLite</span><span>↗</span></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="ai">
+            <div class="h-40 bg-gradient-to-br from-slate-900 via-cyan-950 to-[#0b1015] flex flex-col items-center justify-center p-6 border-b border-theme">
+              <div class="text-xl font-black text-cyan-300">SmartCore LLM Proxy</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">Gemini ⇄ DeepSeek Failover</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p4C">بوابة نماذج لغوية</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p4D">بوابة متوافقة مع OpenAI مع تحويل تلقائي عند الأعطال.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-mono-code text-main flex justify-between"><span>Python · LiteLLM</span><span>↗</span></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="pos">
+            <div class="h-40 bg-gradient-to-br from-emerald-950 via-[#0b1015] to-slate-900 flex flex-col items-center justify-center p-6 border-b border-theme">
+              <img src="/web/image/491" alt="DukanPro Mobile POS" class="h-12 w-auto mb-3 object-contain" loading="lazy" />
+              <div class="text-xl font-black text-emerald-400">DukanPro Mobile POS</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">Retail Cashier & Stock</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p5C">نقطة بيع موبايل</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p5D">كاشير سريع للمحلات التجارية — مبيعات وفواتير ومخزون من هاتفك.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-mono-code text-main flex justify-between"><span>POS · Mobile</span><span>↗</span></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card spotlight-card rounded-3xl overflow-hidden flex flex-col reveal" data-category="pos">
+            <div class="h-40 bg-gradient-to-br from-cyan-950 via-[#0b1015] to-slate-900 flex flex-col items-center justify-center p-6 border-b border-theme">
+              <img src="/web/image/492" alt="KafeFlow POS" class="h-12 w-auto mb-3 object-contain" loading="lazy" />
+              <div class="text-xl font-black text-cyan-400">KafeFlow POS</div>
+              <div class="text-[11px] font-mono-code text-slate-400 mt-1">Cafés & Restaurants</div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-emerald-400 mb-2"><span data-i18n="p6C">نقطة بيع للكافيهات</span><span>2026</span></div>
+                <p class="text-sm text-muted mb-4" data-i18n="p6D">إدارة المنيو والطاولات والطلبات والورديات اليومية بسهولة.</p>
+              </div>
+              <div class="pt-3 border-t border-theme text-xs font-mono-code text-main flex justify-between"><span>POS · Mobile & Desktop</span><span>↗</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         7. TRANSPARENT EGP PRICING WITH MONTHLY / ANNUAL TOGGLE
+         ========================================================= -->
+    <section id="pricing" class="py-20 lg:py-28 bg-subtle border-b border-theme">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="prBadge">الأسعار</span>
+          <h2 class="text-3xl sm:text-4xl font-black mb-4" data-i18n="prTitle">أسعار واضحة بالجنيه المصري</h2>
+          <p class="text-muted text-base mb-7" data-i18n="prDesc">بدون دولار وبدون مفاجآت — تجربة مجانية 14 يوم قبل ما تدفع جنيه.</p>
+
+          <!-- Monthly / Annual Toggle -->
+          <div class="inline-flex items-center p-1.5 rounded-2xl bg-surface border border-theme gap-1">
+            <button id="billMonthly" type="button" class="px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 text-white transition-all" data-i18n="billMo">دفع شهري</button>
+            <button id="billAnnual" type="button" class="px-5 py-2 rounded-xl text-xs sm:text-sm font-extrabold text-muted hover:text-main transition-all flex items-center gap-1.5">
+              <span data-i18n="billYr">دفع سنوي</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px]" data-i18n="billSave">وفر 17%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-7 cascade-grid items-stretch mb-8">
+          <!-- DealFlow CRM -->
+          <div class="spotlight-card featured-card rounded-3xl p-8 flex flex-col justify-between reveal relative">
+            <div class="absolute top-4 end-4 px-3 py-1 rounded-full bg-emerald-500 text-white text-[11px] font-extrabold shadow-lg" data-i18n="prPop">الأكثر طلباً</div>
+            <div>
+              <h3 class="text-2xl font-black mb-2">DealFlow CRM</h3>
+              <div class="text-4xl font-black text-emerald-400 font-mono-code mb-1">
+                <span id="priceDealFlow">500</span>
+                <span class="text-sm font-sans font-bold text-muted" data-i18n="pr1Unit">ج / مستخدم / شهر</span>
+              </div>
+              <p class="text-xs text-muted mb-6" data-i18n="pr1Sub">حتى 5 مستخدمين — 400 ج من 6 مستخدمين فأكثر.</p>
+              <ul class="space-y-3 text-sm mb-8">
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr1F1">لوحة مبيعات لحظية ومتابعة الفريق</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr1F2">تكامل واتساب وتنبيهات فورية</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr1F3">عربي وإنجليزي — موبايل وكمبيوتر</span></li>
+              </ul>
+            </div>
+            <a href="https://wa.me/201021537076?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A7%D9%8B%20%D9%84%D9%80%20DealFlow%20CRM" target="_blank" rel="noopener" class="w-full btn-primary py-3.5 rounded-2xl text-center text-sm" data-i18n="prBtn">اطلب عرضاً تجريبياً</a>
+          </div>
+
+          <!-- DukanPro POS -->
+          <div class="spotlight-card rounded-3xl p-8 flex flex-col justify-between reveal">
+            <div>
+              <h3 class="text-2xl font-black mb-2">DukanPro POS</h3>
+              <div class="text-4xl font-black text-emerald-400 font-mono-code mb-1">
+                <span id="priceDukan">1,200</span>
+                <span class="text-sm font-sans font-bold text-muted" data-i18n="pr2Unit">ج / شهر للفرع</span>
+              </div>
+              <p class="text-xs text-muted mb-6" data-i18n="pr2Sub">كاشير للمحلات التجارية — التأسيس مجاني لأول 5 عملاء.</p>
+              <ul class="space-y-3 text-sm mb-8">
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr2F1">نقطة بيع سريعة للمحل</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr2F2">إدارة أصناف ومخزون بدقة</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr2F3">تقارير مبيعات وأرباح يومية</span></li>
+              </ul>
+            </div>
+            <a href="https://wa.me/201021537076?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A7%D9%8B%20%D9%84%D9%80%20DukanPro%20POS" target="_blank" rel="noopener" class="w-full btn-primary py-3.5 rounded-2xl text-center text-sm" data-i18n="prBtn">اطلب عرضاً تجريبياً</a>
+          </div>
+
+          <!-- KafeFlow POS -->
+          <div class="spotlight-card rounded-3xl p-8 flex flex-col justify-between reveal">
+            <div>
+              <h3 class="text-2xl font-black mb-2">KafeFlow POS</h3>
+              <div class="text-4xl font-black text-emerald-400 font-mono-code mb-1">
+                <span id="priceKafe">1,000</span>
+                <span class="text-sm font-sans font-bold text-muted" data-i18n="pr3Unit">ج / شهر للفرع</span>
+              </div>
+              <p class="text-xs text-muted mb-6" data-i18n="pr3Sub">كاشير للكافيهات والمطاعم — التأسيس مجاني لأول 5 عملاء.</p>
+              <ul class="space-y-3 text-sm mb-8">
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr3F1">إدارة منيو وطاولات وطلبات</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr3F2">تقارير مبيعات وورديات يومية</span></li>
+                <li class="flex items-center gap-2.5"><span class="text-emerald-400 font-black">✓</span><span data-i18n="pr3F3">يشتغل على أجهزتك الحالية</span></li>
+              </ul>
+            </div>
+            <a href="https://wa.me/201021537076?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D8%A7%D9%8B%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A7%D9%8B%20%D9%84%D9%80%20KafeFlow%20POS" target="_blank" rel="noopener" class="w-full btn-primary py-3.5 rounded-2xl text-center text-sm" data-i18n="prBtn">اطلب عرضاً تجريبياً</a>
+          </div>
+        </div>
+
+        <p class="text-center text-xs text-muted" data-i18n="prVat">الأسعار لا تشمل ضريبة القيمة المضافة 14%.</p>
+
+        <!-- Custom Legacy Automation Banner -->
+        <div class="spotlight-card rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-cyan-500/30 reveal">
+          <div>
+            <span class="text-xs font-extrabold text-cyan-400 uppercase tracking-wider" data-i18n="prCustTag">باقة الشركات المخصصة</span>
+            <h3 class="text-xl sm:text-2xl font-black mt-1" data-i18n="prCustTitle">تطوير وأتمتة سيستم شركتك القديم (داشبورد + PDF + Webhooks)</h3>
+            <p class="text-sm text-muted mt-1" data-i18n="prCustSub">تسعير مرن حسب حجم الإجراءات: رسوم تأسيس مرة واحدة + اشتراك دعم واستضافة شهري بسيط.</p>
+          </div>
+          <a href="https://wa.me/201021537076?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%AA%D8%B4%D8%AE%D9%8A%D8%B5%20%D9%84%D8%A3%D8%AA%D9%85%D8%AA%D8%A9%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B3%D8%AA%D9%85%20%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D9%85" target="_blank" rel="noopener" class="btn-primary px-7 py-3.5 rounded-2xl text-sm shrink-0" data-i18n="prCustBtn">احجز جلسة تشخيص مجانية</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         8. FAQ ACCORDION
+         ========================================================= -->
+    <section id="faq" class="py-20 lg:py-28 border-b border-theme">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="faqBadge">الأسئلة الشائعة</span>
+          <h2 class="text-3xl sm:text-4xl font-black" data-i18n="faqTitle">إجابات واضحة على أسئلتك</h2>
+        </div>
+
+        <div class="space-y-4 reveal">
+          <div class="faq-item open rounded-2xl bg-surface border border-theme">
+            <button type="button" class="faq-btn w-full px-6 py-5 flex items-center justify-between text-start font-extrabold text-base">
+              <span data-i18n="faq1Q">هل الأنظمة مفتوحة المصدر؟</span>
+              <span class="faq-icon text-emerald-400 transition-transform duration-300">⌄</span>
+            </button>
+            <div class="faq-body"><div class="faq-inner px-6 pb-5 text-sm text-muted leading-relaxed" data-i18n="faq1A">
+              أدوات الذكاء الاصطناعي (مثل MindGate MCP وSmartCore LLM Proxy) مفتوحة المصدر برخصة MIT على GitHub، بينما أنظمة المؤسسات (ERP وCRM وPOS والأتمتة) تُبنى وتُخصص لكل شركة.
+            </div></div>
+          </div>
+
+          <div class="faq-item rounded-2xl bg-surface border border-theme">
+            <button type="button" class="faq-btn w-full px-6 py-5 flex items-center justify-between text-start font-extrabold text-base">
+              <span data-i18n="faq2Q">هل DealFlow CRM يعمل في بيئة إنتاج حقيقية؟</span>
+              <span class="faq-icon text-emerald-400 transition-transform duration-300">⌄</span>
+            </button>
+            <div class="faq-body"><div class="faq-inner px-6 pb-5 text-sm text-muted leading-relaxed" data-i18n="faq2A">
+              نعم — الإصدار v4.5 يعمل فعلياً لإدارة المبيعات ومتابعة العملاء المحتملين وتوزيعهم مع تنبيهات واتساب فورية.
+            </div></div>
+          </div>
+
+          <div class="faq-item rounded-2xl bg-surface border border-theme">
+            <button type="button" class="faq-btn w-full px-6 py-5 flex items-center justify-between text-start font-extrabold text-base">
+              <span data-i18n="faq3Q">ما هو MindGate MCP؟</span>
+              <span class="faq-icon text-emerald-400 transition-transform duration-300">⌄</span>
+            </button>
+            <div class="faq-body"><div class="faq-inner px-6 pb-5 text-sm text-muted leading-relaxed" data-i18n="faq3A">
+              بوابة ذاكرة وسياق محلية لوكلاء البرمجة (Cursor، Codex، Claude وغيرها) تضم 13 أداة MCP مع بحث SQLite وحماية Node2Shell.
+            </div></div>
+          </div>
+
+          <div class="faq-item rounded-2xl bg-surface border border-theme">
+            <button type="button" class="faq-btn w-full px-6 py-5 flex items-center justify-between text-start font-extrabold text-base">
+              <span data-i18n="faq4Q">إزاي بتتكاملوا مع السيستم القديم بتاع شركتي؟</span>
+              <span class="faq-icon text-emerald-400 transition-transform duration-300">⌄</span>
+            </button>
+            <div class="faq-body"><div class="faq-inner px-6 pb-5 text-sm text-muted leading-relaxed" data-i18n="faq4A">
+              بنبني طبقة واجهة حديثة (Wrapper / Custom Dashboard) تتكلم مع السيستم القديم عبر Webhooks أو APIs آمنة، بحيث تحافظ على بيانات سنين شغلك وتلغي الإدخال اليدوي والوورد تماماً.
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         9. CONTACT SECTION & FOOTER
+         ========================================================= -->
+    <section id="contact" class="py-20 lg:py-28 bg-subtle">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-extrabold mb-4" data-i18n="conBadge">تواصل معنا</span>
+          <h2 class="text-3xl sm:text-4xl font-black mb-4" data-i18n="conTitle">جاهز تسرّع شغل شركتك؟ لنتحدث</h2>
+          <p class="text-muted text-base" data-i18n="conDesc">ابعت تفاصيل مشروعك وسأرد عليك خلال 24 ساعة.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Form -->
+          <div class="lg:col-span-7 bg-surface border border-theme rounded-3xl p-6 sm:p-8 shadow-xl reveal">
+            <div id="formOk" class="hidden mb-5 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-sm font-bold" data-i18n="formOk">
+              ✓ جاري تحويلك إلى واتساب لإرسال تفاصيل طلبك...
+            </div>
+            <form id="contactForm" class="space-y-5" novalidate>
+              <div>
+                <label class="block text-sm font-bold mb-2" for="cName" data-i18n="lblName">الاسم الكامل *</label>
+                <input id="cName" type="text" required class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main focus:outline-none focus:border-emerald-500" placeholder="أحمد محمد" />
+                <p id="errName" class="hidden text-xs text-rose-400 font-bold mt-1" data-i18n="errName">يرجى إدخال اسمك الكامل.</p>
+              </div>
+              <div>
+                <label class="block text-sm font-bold mb-2" for="cPhone" data-i18n="lblPhoneIn">البريد الإلكتروني أو رقم الهاتف *</label>
+                <input id="cPhone" type="text" required class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main focus:outline-none focus:border-emerald-500" placeholder="+20 100 000 0000" />
+                <p id="errPhone" class="hidden text-xs text-rose-400 font-bold mt-1" data-i18n="errPhone">يرجى إدخال بريد أو رقم هاتف صحيح.</p>
+              </div>
+              <div>
+                <label class="block text-sm font-bold mb-2" for="cService" data-i18n="lblSrv">الخدمة المطلوبة</label>
+                <select id="cService" class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main focus:outline-none focus:border-emerald-500">
+                  <option value="أتمتة سيستم قديم" data-i18n="opt1">تطوير وأتمتة سيستم قديم (داشبورد + PDF)</option>
+                  <option value="ERP / CRM" data-i18n="opt2">SmartCore ERP / DealFlow CRM</option>
+                  <option value="POS" data-i18n="opt3">نقطة بيع POS (DukanPro / KafeFlow)</option>
+                  <option value="AI / Custom" data-i18n="opt4">أداة ذكاء اصطناعي / مشروع مخصص</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-bold mb-2" for="cMsg" data-i18n="lblMsg">تفاصيل المشروع *</label>
+                <textarea id="cMsg" rows="4" required class="w-full px-4 py-3 rounded-xl bg-subtle border border-theme text-main focus:outline-none focus:border-emerald-500" placeholder="احكِ لنا باختصار عن احتياج شركتك..."></textarea>
+                <p id="errMsg" class="hidden text-xs text-rose-400 font-bold mt-1" data-i18n="errMsg">يرجى كتابة 10 أحرف على الأقل.</p>
+              </div>
+              <button type="submit" class="w-full btn-primary py-3.5 rounded-2xl text-base" data-i18n="btnSend">إرسال الطلب عبر واتساب</button>
+            </form>
+          </div>
+
+          <!-- Direct Contact Card -->
+          <aside class="lg:col-span-5 bg-surface border border-theme rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 reveal">
+            <h3 class="text-xl font-black" data-i18n="infoTitle">بيانات التواصل المباشر</h3>
+            <p class="text-sm text-muted" data-i18n="infoSub">تواصل مباشرة عبر أي من القنوات التالية.</p>
+
+            <div class="space-y-3.5">
+              <div class="flex items-center gap-4 p-4 rounded-2xl bg-subtle border border-theme">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">📧</div>
+                <div>
+                  <div class="text-xs text-muted font-bold" data-i18n="lblEmail">البريد الإلكتروني</div>
+                  <a href="mailto:manzomaiq@gmail.com" class="font-bold text-sm hover:text-emerald-400 font-mono-code" dir="ltr">manzomaiq@gmail.com</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 p-4 rounded-2xl bg-subtle border border-theme">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">📱</div>
+                <div>
+                  <div class="text-xs text-muted font-bold" data-i18n="lblWa">الهاتف / واتساب</div>
+                  <a href="tel:+201021537076" class="font-bold text-sm hover:text-emerald-400 font-mono-code" dir="ltr">+20 102 153 7076</a>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 p-4 rounded-2xl bg-subtle border border-theme">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">📍</div>
+                <div>
+                  <div class="text-xs text-muted font-bold" data-i18n="lblLoc">الموقع</div>
+                  <div class="font-bold text-sm" data-i18n="valLoc">مصر</div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/201021537076" target="_blank" rel="noopener" class="w-full py-3.5 rounded-2xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-green-600/30 transition-all">
+              <span>💬</span>
+              <span data-i18n="btnWaDirect">تواصل مباشر على واتساب</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface border-t border-theme py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-black">MANZIQ<span class="text-emerald-400">.</span></span>
+        <span class="text-xs text-muted">© 2026 MANZIQ. <span data-i18n="rights">جميع الحقوق محفوظة.</span></span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/aaserag1" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-subtle border border-theme text-xs font-mono-code text-muted hover:text-emerald-400 hover:border-emerald-500 transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/aaserag" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-subtle border border-theme text-xs font-mono-code text-muted hover:text-emerald-400 hover:border-emerald-500 transition-colors">LinkedIn</a>
+        <a href="https://www.facebook.com/aaserag0" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-subtle border border-theme text-xs font-mono-code text-muted hover:text-emerald-400 hover:border-emerald-500 transition-colors">Facebook</a>
+        <a href="https://x.com/ahmedadel" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-subtle border border-theme text-xs font-mono-code text-muted hover:text-emerald-400 hover:border-emerald-500 transition-colors">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button (Bottom-Start) -->
+  <a href="https://wa.me/201021537076" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-pulse fixed bottom-6 start-6 z-40 w-14 h-14 rounded-full bg-green-600 hover:bg-green-500 text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.828 14.094c-.25.703-1.438 1.344-2 1.422-.516.078-1.188.109-1.922-.125-.453-.141-1.031-.344-1.766-.656-3.109-1.344-5.141-4.5-5.297-4.703-.156-.203-1.266-1.688-1.266-3.219 0-1.531.797-2.281 1.078-2.594.281-.312.625-.391.828-.391.203 0 .406.016.594.016.188 0 .453-.078.703.531.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.156.328-.312.5-.156.172-.328.391-.469.531-.156.156-.328.328-.141.641.188.312.828 1.375 1.781 2.219 1.219 1.094 2.25 1.438 2.562 1.594.312.156.5.125.688-.078.188-.203.797-.922 1.016-1.234.219-.312.438-.266.734-.156.297.109 1.891.891 2.219 1.047.328.156.547.234.625.375.078.141.078.812-.172 1.516z"/></svg>
+  </a>
+
+  <!-- Back-to-Top Button (Bottom-End) -->
+  <button id="backToTop" type="button" aria-label="Back to Top" class="fixed bottom-6 end-6 z-40 w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-xl opacity-0 pointer-events-none transition-all duration-300">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- =========================================================
+       JAVASCRIPT ENGINE
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Odoo embed: carry the standalone <body> classes onto the real page body
+      if (document.body) document.body.classList.add('antialiased', 'selection:bg-emerald-500/30', 'selection:text-emerald-300');
+
+      // 1. Scroll Progress Bar & Back-to-Top
+      const progressEl = document.getElementById('scrollProgress');
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (progressEl) progressEl.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+        if (backToTop) {
+          backToTop.classList.toggle('opacity-0', y <= 400);
+          backToTop.classList.toggle('pointer-events-none', y <= 400);
+        }
+      }, { passive: true });
+      if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // 2. Cursor Spotlight Glow on Cards
+      document.querySelectorAll('.spotlight-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      // 3. Subtle 3D Tilt on Hero Command Center
+      const heroTilt = document.getElementById('heroTilt');
+      if (heroTilt && window.matchMedia('(pointer: fine)').matches) {
+        heroTilt.addEventListener('mousemove', e => {
+          const r = heroTilt.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          heroTilt.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+        });
+        heroTilt.addEventListener('mouseleave', () => {
+          heroTilt.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+      }
+
+      // 4. Hero Command Center Interactive Tabs
+      const ccData = {
+        crm: {
+          l1: 'صفقات الشهر', v1: '148', s1: '+24% ↑',
+          l2: 'معدل التحويل', v2: '34.8%', s2: 'v4.5 Live',
+          l3: 'تنبيهات واتساب', v3: '1,290', s3: '0.3s Latency',
+          chart: 'نمو المبيعات اليومي (DealFlow)',
+          line: 'M0,50 L45,42 L90,46 L135,28 L180,32 L225,18 L270,22 L320,6',
+          logs: [
+            ['POST /api/leads/assign → Sales_Team_A', '200 OK', 'text-emerald-400'],
+            ['WA_NOTIFY → Client #842 (Instant)', '38ms', 'text-cyan-400']
+          ]
+        },
+        erp: {
+          l1: 'عقود نشطة', v1: '1,407', s1: '100% Synced',
+          l2: 'قيود يومية', v2: '8,940', s2: 'Double-Entry',
+          l3: 'دقة الجرد', v3: '99.9%', s3: 'Auto Audit',
+          chart: 'تدفقات المالية والمخازن (SmartCore)',
+          line: 'M0,45 L45,38 L90,34 L135,36 L180,22 L225,25 L270,12 L320,8',
+          logs: [
+            ['POST /erp/journal-entry → Ledger #104', '201 Created', 'text-emerald-400'],
+            ['CRON /returns/disburse → 142 Payouts', 'Done ✓', 'text-cyan-400']
+          ]
+        },
+        legacy: {
+          l1: 'عقود PDF اليوم', v1: '86', s1: '0 Errors',
+          l2: 'توفير الوقت', v2: '80%', s2: '45m → 12s',
+          l3: 'حالة Webhook', v3: '99.98%', s3: '42ms Avg',
+          chart: 'سرعة مزامنة السيستم القديم (Wrapper)',
+          line: 'M0,52 L45,48 L90,30 L135,26 L180,20 L225,14 L270,10 L320,5',
+          logs: [
+            ['POST /webhook/legacy-erp-sync → #4092', '200 OK', 'text-emerald-400'],
+            ['PDF_ENGINE → Contract_4092.pdf (RTL)', '0.4s', 'text-cyan-400']
+          ]
+        }
+      };
+
+      document.querySelectorAll('.cc-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cc-tab').forEach(b => {
+            b.classList.remove('bg-emerald-500', 'text-white');
+            b.classList.add('text-muted');
+          });
+          btn.classList.add('bg-emerald-500', 'text-white');
+          btn.classList.remove('text-muted');
+
+          const d = ccData[btn.dataset.tab];
+          document.getElementById('ccLabel1').textContent = d.l1;
+          document.getElementById('ccVal1').textContent = d.v1;
+          document.getElementById('ccSub1').textContent = d.s1;
+          document.getElementById('ccLabel2').textContent = d.l2;
+          document.getElementById('ccVal2').textContent = d.v2;
+          document.getElementById('ccSub2').textContent = d.s2;
+          document.getElementById('ccLabel3').textContent = d.l3;
+          document.getElementById('ccVal3').textContent = d.v3;
+          document.getElementById('ccSub3').textContent = d.s3;
+          document.getElementById('ccChartTitle').textContent = d.chart;
+          document.getElementById('ccSparkLine').setAttribute('d', d.line);
+          document.getElementById('ccSparkArea').setAttribute('d', d.line + ' L320,60 L0,60 Z');
+          document.getElementById('ccLogs').innerHTML = d.logs.map(l => `
+            <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-subtle/80 border border-theme">
+              <span class="text-main truncate">${l[0]}</span>
+              <span class="${l[2]} font-bold shrink-0 ms-2">${l[1]}</span>
+            </div>
+          `).join('');
+        });
+      });
+
+      // 5. Interactive Legacy System Modernization Playground
+      const pgRunBtn = document.getElementById('pgRunBtn');
+      if (pgRunBtn) {
+        pgRunBtn.addEventListener('click', () => {
+          const client = document.getElementById('pgClient').value.trim() || 'شركة النيل للاستثمار';
+          const amount = document.getElementById('pgAmount').value.trim() || '250,000';
+          const type = document.getElementById('pgType').value;
+          const refNum = '#CNT-2026-' + Math.floor(4100 + Math.random() * 899);
+          const today = new Date().toISOString().slice(0, 10);
+
+          // Animate 3 steps
+          const s1 = document.getElementById('pipe1St');
+          const s2 = document.getElementById('pipe2St');
+          const s3 = document.getElementById('pipe3St');
+          s1.textContent = '...'; s2.textContent = '...'; s3.textContent = '...';
+
+          setTimeout(() => { s1.textContent = '✓'; }, 180);
+          setTimeout(() => {
+            s2.textContent = '200 OK';
+            document.getElementById('pgHttpBadge').textContent = `200 OK (${Math.floor(32 + Math.random() * 25)}ms)`;
+            document.getElementById('pgJsonOut').textContent = JSON.stringify({
+              event: 'contract.created',
+              ref: refNum,
+              target: 'LEGACY_ERP_DB',
+              client: client,
+              amount_egp: amount,
+              type: type,
+              pdf_status: 'generated'
+            }, null, 2);
+          }, 480);
+
+          setTimeout(() => {
+            s3.textContent = 'Ready ✓';
+            document.getElementById('pdfRef').textContent = refNum;
+            document.getElementById('pdfClientVal').textContent = client;
+            document.getElementById('pdfTypeVal').textContent = type;
+            document.getElementById('pdfAmtVal').textContent = amount + ' EGP';
+            document.getElementById('pdfDateVal').textContent = today;
+          }, 820);
+        });
+      }
+
+      // 6. Interactive ROI Calculator
+      const roiEmp = document.getElementById('roiEmp');
+      const roiDocs = document.getElementById('roiDocs');
+      function updateROI() {
+        const emp = parseInt(roiEmp.value, 10);
+        const docs = parseInt(roiDocs.value, 10);
+        document.getElementById('roiEmpVal').textContent = emp;
+        document.getElementById('roiDocsVal').textContent = docs;
+        // Estimate: ~22 mins saved per doc * 22 working days, scaled gently by team coordination
+        const hoursSaved = Math.round(((docs * 22) / 60) * 22 + (emp * 4));
+        const moneySaved = hoursSaved * 100; // ~100 EGP avg operational cost/hour
+        document.getElementById('roiHours').textContent = hoursSaved.toLocaleString('en-US');
+        document.getElementById('roiMoney').textContent = moneySaved.toLocaleString('en-US');
+      }
+      if (roiEmp && roiDocs) {
+        roiEmp.addEventListener('input', updateROI);
+        roiDocs.addEventListener('input', updateROI);
+        updateROI();
+      }
+
+      // 7. Portfolio Filter
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const f = btn.dataset.filter;
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-500', 'text-white');
+            b.classList.add('bg-surface', 'text-muted');
+          });
+          btn.classList.add('bg-emerald-500', 'text-white');
+          btn.classList.remove('bg-surface', 'text-muted');
+          document.querySelectorAll('.portfolio-card').forEach(c => {
+            c.style.display = (f === 'all' || c.dataset.category === f) ? 'flex' : 'none';
+          });
+        });
+      });
+
+      // 8. Pricing Monthly / Annual Toggle
+      const billMonthly = document.getElementById('billMonthly');
+      const billAnnual = document.getElementById('billAnnual');
+      function setBilling(mode) {
+        const isAnnual = mode === 'annual';
+        billMonthly.classList.toggle('bg-emerald-500', !isAnnual);
+        billMonthly.classList.toggle('text-white', !isAnnual);
+        billMonthly.classList.toggle('text-muted', isAnnual);
+        billAnnual.classList.toggle('bg-emerald-500', isAnnual);
+        billAnnual.classList.toggle('text-white', isAnnual);
+        billAnnual.classList.toggle('text-muted', !isAnnual);
+
+        document.getElementById('priceDealFlow').textContent = isAnnual ? '417' : '500';
+        document.getElementById('priceDukan').textContent = isAnnual ? '1,000' : '1,200';
+        document.getElementById('priceKafe').textContent = isAnnual ? '833' : '1,000';
+      }
+      if (billMonthly && billAnnual) {
+        billMonthly.addEventListener('click', () => setBilling('monthly'));
+        billAnnual.addEventListener('click', () => setBilling('annual'));
+      }
+
+      // 9. FAQ Accordion
+      document.querySelectorAll('.faq-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          const open = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+          if (!open) item.classList.add('open');
+        });
+      });
+
+      // 10. Staggered Scroll Reveal
+      document.querySelectorAll('.cascade-grid').forEach(g => {
+        g.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i * 75) + 'ms'; });
+      });
+      const obs = new IntersectionObserver((entries, o) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // 11. Mobile Menu & Theme Toggle
+      const mobileBtn = document.getElementById('mobileBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+      }
+
+      const htmlEl = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      function applyTheme(t) {
+        htmlEl.setAttribute('data-theme', t);
+        if (themeIcon) {
+          themeIcon.innerHTML = t === 'dark'
+            ? '<circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>'
+            : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+        }
+      }
+      function setTheme(t) {
+        try { localStorage.setItem('manziq_theme', t); } catch (e) {}
+        applyTheme(t);
+      }
+      try { applyTheme(localStorage.getItem('manziq_theme') || 'dark'); } catch (e) { applyTheme('dark'); }
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => setTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+      }
+
+      // 12. Contact Form -> WhatsApp
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const n = document.getElementById('cName').value.trim();
+          const p = document.getElementById('cPhone').value.trim();
+          const s = document.getElementById('cService').value;
+          const m = document.getElementById('cMsg').value.trim();
+          let ok = true;
+          document.getElementById('errName').classList.toggle('hidden', n.length >= 2);
+          if (n.length < 2) ok = false;
+          document.getElementById('errPhone').classList.toggle('hidden', p.length >= 6);
+          if (p.length < 6) ok = false;
+          document.getElementById('errMsg').classList.toggle('hidden', m.length >= 10);
+          if (m.length < 10) ok = false;
+
+          if (ok) {
+            document.getElementById('formOk').classList.remove('hidden');
+            const txt = encodeURIComponent(`طلب جديد من MANZIQ\nالاسم: ${n}\nالتواصل: ${p}\nالخدمة: ${s}\nالتفاصيل: ${m}`);
+            window.open('https://wa.me/201021537076?text=' + txt, '_blank');
+            contactForm.reset();
+            setTimeout(() => document.getElementById('formOk').classList.add('hidden'), 5000);
+          }
+        });
+      }
+
+      // 13. Full Bilingual Toggle (AR / EN)
+      const i18n = {
+        ar: {
+          navAbout: 'من نحن', navServices: 'خدماتنا', navAuto: 'الأتمتة', navPortfolio: 'أعمالنا', navPricing: 'الأسعار', navFaq: 'الأسئلة الشائعة', navContact: 'تواصل معنا', navCta: 'اطلب استشارة',
+          heroBadge: 'تطوير أنظمة المؤسسات والذكاء الاصطناعي',
+          heroTitle: 'نبني الأنظمة التي تُدير <span class="text-gradient">شركتك بالكامل</span>',
+          heroSub: 'من أنظمة ERP وCRM ونقاط البيع إلى أتمتة الأنظمة القديمة وأدوات الذكاء الاصطناعي — أنظمة عملية مبنية لشركات حقيقية وتعمل في الإنتاج الآن.',
+          heroCta1: 'استكشف الأنظمة', heroCta2: 'جرّب محاكي الأتمتة',
+          pgBadge: 'محاكي تفاعلي حي — جرّب بنفسك', pgTitle: 'طوّر سيستم شركتك القديم.. <span class="text-gradient">من غير ما تغيّره!</span>',
+          pgSub: 'اكتب أي بيانات عقد هنا واضغط إصدار؛ وشوف إزاي واجهة MANZIQ بترحّل البيانات للسيستم القديم عبر Webhook وتطلعلك العقد PDF جاهز للطباعة في لحظة.',
+          pgInputTitle: 'واجهة الموظف المبسطة', pgLblClient: 'اسم العميل / الشركة', pgLblAmount: 'قيمة العقد (جنيه مصري)', pgLblType: 'نوع العقد',
+          pgOpt1: 'عقد استثمار وعوائد', pgOpt2: 'عقد توريد بضائع', pgOpt3: 'عقد تقديم خدمات', pgRunBtn: 'إصدار العقد ومزامنة السيستم الآن',
+          pipe1: '1. فحص البيانات', pipe2: '2. Webhook Sync', pipe3: '3. توليد PDF',
+          pdfClientLbl: 'الطرف الثاني:', pdfTypeLbl: 'نوع العقد:', pdfAmtLbl: 'القيمة الإجمالية:', pdfDateLbl: 'تاريخ الإصدار:',
+          cmpOld: '✕ الطريقة اليدوية القديمة: 45 دقيقة · وورد + إدخال مكرر', cmpNew: '✓ طريقة MANZIQ: 12 ثانية · مزامنة فورية + صفر أخطاء',
+          roiBadge: 'حاسبة العائد (ROI)', roiTitle: 'احسب شركتك هتوفر كام ساعة وكام جنيه شهرياً', roiSub: 'حرّك المؤشرات حسب حجم فريقك وشوف الأثر المالي الفوري لأتمتة الإدخالات والعقود.',
+          roiLblEmp: 'عدد الموظفين', roiLblDocs: 'عدد العقود / الفواتير يومياً', roiOut1: 'الساعات الموفرة شهرياً', roiOut1Sub: 'ساعة عمل / شهر',
+          roiOut2: 'التوفير المالي التقريبي', roiOut2Sub: 'جنيه مصري / شهر', roiCta: 'احجز جلسة تشخيص مجانية (20 دقيقة)',
+          srvBadge: 'خدماتنا', srvTitle: 'منظومة برمجية متكاملة للمؤسسات', srvDesc: 'أنظمة عملية مصممة على مقاس السوق المصري والعربي لتسريع التشغيل وزيادة المبيعات.',
+          srv1T: 'SmartCore ERP', srv1D: 'نظام متكامل لإدارة الشركة: المالية، المخازن، الموارد البشرية، عقود الاستثمار، ومركز قيادة موحّد.',
+          srv2T: 'DealFlow CRM v4.5', srv2D: 'إدارة العملاء المحتملين ومراحل البيع والنشاط اليومي مع تنبيهات واتساب فورية — يعمل في الإنتاج الآن.',
+          srv3T: 'تطوير وأتمتة الأنظمة القديمة', srv3D: 'بناء داشبورد حديثة فوق سيستم شركتك القديم لإلغاء الإدخالات المكررة وإصدار العقود PDF تلقائياً عبر Webhooks.',
+          srv4T: 'نقاط البيع POS (DukanPro & KafeFlow)', srv4D: 'أنظمة كاشير موبايل وديسكتوب للمحلات التجارية والكافيهات والمطاعم مع إدارة مخزون وورديات.',
+          srv5T: 'أدوات الذكاء الاصطناعي (MindGate)', srv5D: 'ذاكرة محلية لوكلاء البرمجة (13 أداة MCP) وبوابة SmartCore LLM Proxy للتحويل التلقائي بين Gemini وDeepSeek.',
+          srv6T: 'متاجر إلكترونية ومنصات ويب', srv6D: 'متاجر جملة وتجزئة ومنصات ويب ثنائية اللغة سريعة ومربوطة بواتساب لزيادة المبيعات.',
+          portBadge: 'أعمالنا', portTitle: 'مشاريع حقيقية، تعمل الآن', portDesc: 'تصفح أنظمتنا حسب الفئة — من أنظمة المؤسسات إلى أدوات الذكاء الاصطناعي.',
+          fAll: 'الكل', fSys: 'أنظمة مؤسسات', fPos: 'نقاط بيع', fAi: 'ذكاء اصطناعي',
+          p1C: 'نظام ERP متكامل', p1D: 'إدارة المالية والمخازن والمبيعات وعقود الاستثمار في منصة واحدة.',
+          p2C: 'نظام CRM ومبيعات', p2D: 'تتبع العملاء المحتملين والصفقات مع توزيع ذكي وتنبيهات واتساب.', p2M: 'يعمل في الإنتاج الآن',
+          p3C: 'بوابة ذاكرة MCP', p3D: 'ذاكرة محلية وسياق دائم لوكلاء البرمجة مع حماية Node2Shell.',
+          p4C: 'بوابة نماذج لغوية', p4D: 'بوابة متوافقة مع OpenAI مع تحويل تلقائي عند الأعطال.',
+          p5C: 'نقطة بيع موبايل', p5D: 'كاشير سريع للمحلات التجارية — مبيعات وفواتير ومخزون من هاتفك.',
+          p6C: 'نقطة بيع للكافيهات', p6D: 'إدارة المنيو والطاولات والطلبات والورديات اليومية بسهولة.',
+          prBadge: 'الأسعار', prTitle: 'أسعار واضحة بالجنيه المصري', prDesc: 'بدون دولار وبدون مفاجآت — تجربة مجانية 14 يوم قبل ما تدفع جنيه.',
+          billMo: 'دفع شهري', billYr: 'دفع سنوي', billSave: 'وفر 17%', prPop: 'الأكثر طلباً', prBtn: 'اطلب عرضاً تجريبياً', prVat: 'الأسعار لا تشمل ضريبة القيمة المضافة 14%.',
+          pr1Unit: 'ج / مستخدم / شهر', pr1Sub: 'حتى 5 مستخدمين — 400 ج من 6 مستخدمين فأكثر.',
+          pr1F1: 'لوحة مبيعات لحظية ومتابعة الفريق', pr1F2: 'تكامل واتساب وتنبيهات فورية', pr1F3: 'عربي وإنجليزي — موبايل وكمبيوتر',
+          pr2Unit: 'ج / شهر للفرع', pr2Sub: 'كاشير للمحلات التجارية — التأسيس مجاني لأول 5 عملاء.',
+          pr2F1: 'نقطة بيع سريعة للمحل', pr2F2: 'إدارة أصناف ومخزون بدقة', pr2F3: 'تقارير مبيعات وأرباح يومية',
+          pr3Unit: 'ج / شهر للفرع', pr3Sub: 'كاشير للكافيهات والمطاعم — التأسيس مجاني لأول 5 عملاء.',
+          pr3F1: 'إدارة منيو وطاولات وطلبات', pr3F2: 'تقارير مبيعات وورديات يومية', pr3F3: 'يشتغل على أجهزتك الحالية',
+          prCustTag: 'باقة الشركات المخصصة', prCustTitle: 'تطوير وأتمتة سيستم شركتك القديم (داشبورد + PDF + Webhooks)',
+          prCustSub: 'تسعير مرن حسب حجم الإجراءات: رسوم تأسيس مرة واحدة + اشتراك دعم واستضافة شهري بسيط.', prCustBtn: 'احجز جلسة تشخيص مجانية',
+          faqBadge: 'الأسئلة الشائعة', faqTitle: 'إجابات واضحة على أسئلتك',
+          faq1Q: 'هل الأنظمة مفتوحة المصدر؟', faq1A: 'أدوات الذكاء الاصطناعي (مثل MindGate MCP وSmartCore LLM Proxy) مفتوحة المصدر برخصة MIT على GitHub، بينما أنظمة المؤسسات (ERP وCRM وPOS والأتمتة) تُبنى وتُخصص لكل شركة.',
+          faq2Q: 'هل DealFlow CRM يعمل في بيئة إنتاج حقيقية؟', faq2A: 'نعم — الإصدار v4.5 يعمل فعلياً لإدارة المبيعات ومتابعة العملاء المحتملين وتوزيعهم مع تنبيهات واتساب فورية.',
+          faq3Q: 'ما هو MindGate MCP؟', faq3A: 'بوابة ذاكرة وسياق محلية لوكلاء البرمجة (Cursor، Codex، Claude وغيرها) تضم 13 أداة MCP مع بحث SQLite وحماية Node2Shell.',
+          faq4Q: 'إزاي بتتكاملوا مع السيستم القديم بتاع شركتي؟', faq4A: 'بنبني طبقة واجهة حديثة (Wrapper / Custom Dashboard) تتكلم مع السيستم القديم عبر Webhooks أو APIs آمنة، بحيث تحافظ على بيانات سنين شغلك وتلغي الإدخال اليدوي والوورد تماماً.',
+          conBadge: 'تواصل معنا', conTitle: 'جاهز تسرّع شغل شركتك؟ لنتحدث', conDesc: 'ابعت تفاصيل مشروعك وسأرد عليك خلال 24 ساعة.',
+          formOk: '✓ جاري تحويلك إلى واتساب لإرسال تفاصيل طلبك...', lblName: 'الاسم الكامل *', errName: 'يرجى إدخال اسمك الكامل.',
+          lblPhoneIn: 'البريد الإلكتروني أو رقم الهاتف *', errPhone: 'يرجى إدخال بريد أو رقم هاتف صحيح.', lblSrv: 'الخدمة المطلوبة',
+          opt1: 'تطوير وأتمتة سيستم قديم (داشبورد + PDF)', opt2: 'SmartCore ERP / DealFlow CRM', opt3: 'نقطة بيع POS (DukanPro / KafeFlow)', opt4: 'أداة ذكاء اصطناعي / مشروع مخصص',
+          lblMsg: 'تفاصيل المشروع *', errMsg: 'يرجى كتابة 10 أحرف على الأقل.', btnSend: 'إرسال الطلب عبر واتساب',
+          infoTitle: 'بيانات التواصل المباشر', infoSub: 'تواصل مباشرة عبر أي من القنوات التالية.', lblEmail: 'البريد الإلكتروني', lblWa: 'الهاتف / واتساب', lblLoc: 'الموقع', valLoc: 'مصر', btnWaDirect: 'تواصل مباشر على واتساب', rights: 'جميع الحقوق محفوظة.'
+        },
+        en: {
+          navAbout: 'About', navServices: 'Services', navAuto: 'Automation', navPortfolio: 'Work', navPricing: 'Pricing', navFaq: 'FAQ', navContact: 'Contact', navCta: 'Free Audit',
+          heroBadge: 'Enterprise Software & AI Automation',
+          heroTitle: 'We Build the Systems That Run <span class="text-gradient">Your Entire Business</span>',
+          heroSub: 'From ERP, CRM, and POS platforms to legacy system modernization and AI tooling — practical systems built for real companies, running in production today.',
+          heroCta1: 'Explore Systems', heroCta2: 'Try Live Simulator',
+          pgBadge: 'Interactive Live Playground', pgTitle: 'Modernize Your Legacy ERP.. <span class="text-gradient">Without Replacing It!</span>',
+          pgSub: 'Enter any contract details below and hit issue to watch MANZIQ sync with your legacy ERP via Webhook and generate a print-ready PDF instantly.',
+          pgInputTitle: 'Simplified Staff Dashboard', pgLblClient: 'Client / Company Name', pgLblAmount: 'Contract Value (EGP)', pgLblType: 'Contract Type',
+          pgOpt1: 'Investment & Returns', pgOpt2: 'Supply Agreement', pgOpt3: 'Service Contract', pgRunBtn: 'Issue Contract & Sync ERP Now',
+          pipe1: '1. Validate Data', pipe2: '2. Webhook Sync', pipe3: '3. Render PDF',
+          pdfClientLbl: 'Client:', pdfTypeLbl: 'Type:', pdfAmtLbl: 'Total Value:', pdfDateLbl: 'Issue Date:',
+          cmpOld: '✕ Legacy Manual Flow: 45 mins · MS Word + Double Entry', cmpNew: '✓ MANZIQ Flow: 12 secs · Instant Sync + Zero Errors',
+          roiBadge: 'ROI Calculator', roiTitle: 'Calculate Your Monthly Time & Cost Savings', roiSub: 'Adjust the sliders to match your team size and see the instant financial impact of workflow automation.',
+          roiLblEmp: 'Team Size (Employees)', roiLblDocs: 'Contracts / Invoices per Day', roiOut1: 'Hours Saved / Month', roiOut1Sub: 'work hours / mo',
+          roiOut2: 'Est. Monthly Savings', roiOut2Sub: 'EGP / month', roiCta: 'Book a Free 20-Min Diagnostic Audit',
+          srvBadge: 'Our Services', srvTitle: 'Complete Enterprise Software Suite', srvDesc: 'Practical solutions engineered for speed, reliability, and zero manual rework.',
+          srv1T: 'SmartCore ERP', srv1D: 'All-in-one enterprise platform: Finance, Inventory, HR, Investment Contracts, and a unified Command Center.',
+          srv2T: 'DealFlow CRM v4.5', srv2D: 'Lead tracking, sales pipeline, and daily team activity with instant WhatsApp alerts — live in production.',
+          srv3T: 'Legacy System Modernization', srv3D: 'Build sleek custom dashboards on top of your existing ERP to eliminate double entry and auto-generate PDFs via Webhooks.',
+          srv4T: 'POS Systems (DukanPro & KafeFlow)', srv4D: 'Mobile and desktop POS for retail stores, cafés, and restaurants with inventory and shift reporting.',
+          srv5T: 'AI Developer Tools (MindGate)', srv5D: 'Local persistent memory for coding agents (13 MCP tools) plus SmartCore LLM Proxy with Gemini/DeepSeek failover.',
+          srv6T: 'E-Commerce & Web Platforms', srv6D: 'Fast bilingual wholesale/retail stores and WhatsApp-integrated web platforms.',
+          portBadge: 'Selected Work', portTitle: 'Real Systems, Running Today', portDesc: 'Filter our production work across enterprise systems, POS, and AI tools.',
+          fAll: 'All', fSys: 'Enterprise', fPos: 'POS', fAi: 'AI Tools',
+          p1C: 'Full ERP System', p1D: 'Finance, inventory, sales, HR, and investment management in one platform.',
+          p2C: 'CRM & Sales', p2D: 'Lead pipeline, smart distribution, and instant WhatsApp notifications.', p2M: 'Live in Production',
+          p3C: 'MCP Memory Gateway', p3D: 'Local memory & context server for coding agents with Node2Shell hardening.',
+          p4C: 'LLM Failover Proxy', p4D: 'OpenAI-compatible gateway with automatic Gemini/DeepSeek failover.',
+          p5C: 'Mobile POS', p5D: 'Fast retail cashier for shops — invoicing and inventory from your phone.',
+          p6C: 'Café POS', p6D: 'Menu, tables, orders, and daily shift management for cafés & restaurants.',
+          prBadge: 'Pricing', prTitle: 'Transparent Pricing in EGP', prDesc: 'No USD surprises — 14-day free trial before you pay a single pound.',
+          billMo: 'Monthly', billYr: 'Annual', billSave: 'Save 17%', prPop: 'Most Popular', prBtn: 'Request Free Demo', prVat: 'Prices exclude 14% VAT.',
+          pr1Unit: 'EGP / user / mo', pr1Sub: 'Up to 5 users — 400 EGP/user for 6+ users.',
+          pr1F1: 'Real-time sales dashboard & team tracking', pr1F2: 'WhatsApp integration & instant alerts', pr1F3: 'Full Arabic & English — Mobile & Desktop',
+          pr2Unit: 'EGP / mo / branch', pr2Sub: 'Retail shop cashier — Free setup for first 5 clients.',
+          pr2F1: 'Fast retail point-of-sale', pr2F2: 'Accurate product & stock tracking', pr2F3: 'Daily sales & profit reports',
+          pr3Unit: 'EGP / mo / branch', pr3Sub: 'Café & restaurant cashier — Free setup for first 5 clients.',
+          pr3F1: 'Menu, tables & order management', pr3F2: 'Daily sales & shift reports', pr3F3: 'Runs on your existing hardware',
+          prCustTag: 'Custom Enterprise Package', prCustTitle: 'Legacy System Modernization & Automation (Dashboard + PDF + Webhooks)',
+          prCustSub: 'Flexible pricing: One-time setup fee + affordable monthly hosting & support.', prCustBtn: 'Book Free Diagnostic Audit',
+          faqBadge: 'FAQ', faqTitle: 'Clear Answers to Your Questions',
+          faq1Q: 'Are the systems open-source?', faq1A: 'Our AI developer tools (MindGate MCP & SmartCore LLM Proxy) are open-source under MIT on GitHub, while enterprise systems (ERP, CRM, POS, Automation) are custom-built for each company.',
+          faq2Q: 'Is DealFlow CRM running in real production?', faq2A: 'Yes — v4.5 actively manages sales pipelines, lead distribution, and instant WhatsApp notifications in production.',
+          faq3Q: 'What is MindGate MCP?', faq3A: 'A local-first memory & context gateway for AI coding agents (Cursor, Codex, Claude) with 13 MCP tools, SQLite FTS, and Node2Shell protection.',
+          faq4Q: 'How do you integrate with our existing legacy ERP?', faq4A: 'We build a modern custom dashboard layer connected to your legacy system via secure Webhooks/APIs — preserving years of data while eliminating manual Word re-entry.',
+          conBadge: 'Contact Us', conTitle: 'Ready to Accelerate Your Operations?', conDesc: 'Send your project details and I will reply within 24 hours.',
+          formOk: '✓ Redirecting you to WhatsApp with your request...', lblName: 'Full Name *', errName: 'Please enter your full name.',
+          lblPhoneIn: 'Email or Phone Number *', errPhone: 'Please enter a valid email or phone.', lblSrv: 'Service Needed',
+          opt1: 'Legacy System Modernization (Dashboard + PDF)', opt2: 'SmartCore ERP / DealFlow CRM', opt3: 'POS System (DukanPro / KafeFlow)', opt4: 'AI Tool / Custom Project',
+          lblMsg: 'Project Details *', errMsg: 'Please write at least 10 characters.', btnSend: 'Send Request via WhatsApp',
+          infoTitle: 'Direct Contact Info', infoSub: 'Reach out directly through any of these channels.', lblEmail: 'Email Address', lblWa: 'Phone / WhatsApp', lblLoc: 'Location', valLoc: 'Egypt', btnWaDirect: 'Chat Directly on WhatsApp', rights: 'All rights reserved.'
+        }
+      };
+
+      const langToggle = document.getElementById('langToggle');
+      let lang = 'ar';
+      function applyLanguage(l) {
+        lang = l;
+        htmlEl.setAttribute('lang', lang);
+        htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        if (langToggle) langToggle.textContent = lang === 'ar' ? 'EN' : 'عربي';
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const k = el.getAttribute('data-i18n');
+          if (i18n[lang][k]) {
+            if (k === 'heroTitle' || k === 'pgTitle') el.innerHTML = i18n[lang][k];
+            else el.textContent = i18n[lang][k];
+          }
+        });
+        try { localStorage.setItem('manziq_lang', lang); } catch (e) {}
+      }
+      try {
+        const savedLang = localStorage.getItem('manziq_lang');
+        if (savedLang === 'ar' || savedLang === 'en') applyLanguage(savedLang);
+      } catch (e) {}
+      if (langToggle) {
+        langToggle.addEventListener('click', () => applyLanguage(lang === 'ar' ? 'en' : 'ar'));
+      }
+    })();
+  </script>
+</body>
+</html>
